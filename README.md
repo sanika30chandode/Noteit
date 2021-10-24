@@ -1,2 +1,2 @@
 # Noteit
-for inheritance project
+for inheritance project.
