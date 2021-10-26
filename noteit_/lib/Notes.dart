@@ -378,7 +378,7 @@ Widget notesHeader() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Stark Industries",
+          "NoteIt",
           style: TextStyle(
             color: Colors.blueAccent,
             fontSize: 30.00,

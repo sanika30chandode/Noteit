@@ -25,7 +25,7 @@ List<Color> noteColor = [
   Colors.purple[50],
 ];
 List<Color> noteMarginColor = [
-  Colors.pink[300],
+  Colors.pink[500],
   Colors.green[300],
   Colors.blue[300],
   Colors.orange[300],
