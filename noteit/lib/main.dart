@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
+
                 //alignment: Alignment.center,
               ),
               Container(
@@ -69,41 +72,51 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               ListTile(
+                leading: Icon(CupertinoIcons.alarm, color: Colors.deepPurple),
                 title: const Text('Alarms'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
+                leading:
+                    Icon(CupertinoIcons.calendar, color: Colors.deepPurple),
                 title: const Text('Calender'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
+                leading: Icon(CupertinoIcons.book, color: Colors.deepPurple),
                 title: const Text('Notes'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
+                leading:
+                    Icon(CupertinoIcons.hand_draw, color: Colors.deepPurple),
                 title: const Text('Drawing'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
+                leading: Icon(CupertinoIcons.pen, color: Colors.deepPurple),
                 title: const Text('Quick Notes'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
+              /*
               ListTile(
+                leading: Icon(CupertinoIcons.person, color: Colors.deepPurple),
                 title: const Text('Diary'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
+              */
             ],
           ),
         ),
