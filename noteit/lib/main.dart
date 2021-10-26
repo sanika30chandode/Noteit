@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
               Container(
                   alignment: const Alignment(-0.05, -0.65),
                   child: const Text(
-                    'Noteit',
+                    'NoteIt',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
