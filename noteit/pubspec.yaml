@@ -76,8 +76,8 @@ flutter:
   # example:
   fonts:
     - family: Daniel
-      fonts: 
-      - asset: assets/fonts/Daniel-Regular.otf
+      fonts:
+        - asset: assets/fonts/Daniel-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
