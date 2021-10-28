@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import '../routes.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   get color => null;
 
@@ -83,7 +81,7 @@ class MyApp extends StatelessWidget {
                     Icon(CupertinoIcons.calendar, color: Colors.deepPurple),
                 title: const Text('Calender'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, NoteitRoutes.homeroute);
                 },
               ),
               ListTile(
@@ -121,6 +119,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => Home(),
+        NoteitRoutes.homeroute: (context) => Home(),
+        //MyRoutes.loginRoute: (context) => LoginPage()
+      },
     );
   }
 }
