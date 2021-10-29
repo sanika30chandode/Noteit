@@ -8,14 +8,14 @@
             "name": "noteit",
             "request": "launch",
             "type": "dart",
-            "program": "../lib/utils/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "noteit (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "../lib/utils/main.dart"
+            "program": "lib/main.dart"
         }
     ]
 }
