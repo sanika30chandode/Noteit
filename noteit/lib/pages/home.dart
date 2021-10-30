@@ -98,7 +98,7 @@ class Home extends StatelessWidget {
                     color: Colors.deepPurple),
                 title: const Text('Drawing'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, NoteitRoutes.drawroute);
                 },
               ),
               ListTile(

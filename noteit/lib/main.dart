@@ -3,6 +3,7 @@ import 'package:noteit/utils/routes.dart';
 import 'utils/routes.dart';
 import 'pages/home.dart';
 import 'pages/calendar.dart';
+import 'pages/drawing.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,9 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: "/",
       routes: {
-        "/": (context) => Home(),
-        NoteitRoutes.homeroute: (context) => Home(),
+        "/": (context) => const Home(),
+        NoteitRoutes.homeroute: (context) => const Home(),
         NoteitRoutes.calroute: (context) => Calendar(),
+        NoteitRoutes.drawroute: (context) => Drawing()
         //MyRoutes.loginRoute: (context) => LoginPage()
       },
     );
