@@ -13,12 +13,11 @@ class Painter extends StatefulWidget {
   final PainterController painterController;
 
   /// Creates an instance of this widget that operates on top of the supplied [PainterController].
-  Painter(PainterController painterController)
-      : this.painterController = painterController,
-        super(key: new ValueKey<PainterController>(painterController));
+  Painter(this.painterController)
+      : super(key: ValueKey<PainterController>(painterController));
 
   @override
-  _PainterState createState() => new _PainterState();
+  _PainterState createState() => _PainterState();
 }
 
 class _PainterState extends State<Painter> {
@@ -39,21 +38,21 @@ class _PainterState extends State<Painter> {
 
   @override
   Widget build(BuildContext context) {
-    Widget child = new CustomPaint(
+    Widget child = CustomPaint(
       willChange: true,
-      painter: new _PainterPainter(widget.painterController._pathHistory,
+      painter: _PainterPainter(widget.painterController._pathHistory,
           repaint: widget.painterController),
     );
-    child = new ClipRect(child: child);
+    child = ClipRect(child: child);
     if (!_finished) {
-      child = new GestureDetector(
+      child = GestureDetector(
         child: child,
         onPanStart: _onPanStart,
         onPanUpdate: _onPanUpdate,
         onPanEnd: _onPanEnd,
       );
     }
-    return new Container(
+    return Container(
       child: child,
       width: double.infinity,
       height: double.infinity,
@@ -107,8 +106,8 @@ class _PathHistory {
   _PathHistory()
       : _paths = <MapEntry<Path, Paint>>[],
         _inDrag = false,
-        _backgroundPaint = new Paint()..blendMode = BlendMode.dstOver,
-        currentPaint = new Paint()
+        _backgroundPaint = Paint()..blendMode = BlendMode.dstOver,
+        currentPaint = Paint()
           ..color = Colors.black
           ..strokeWidth = 1.0
           ..style = PaintingStyle.fill;
@@ -132,9 +131,9 @@ class _PathHistory {
   void add(Offset startPoint) {
     if (!_inDrag) {
       _inDrag = true;
-      Path path = new Path();
+      Path path = Path();
       path.moveTo(startPoint.dx, startPoint.dy);
-      _paths.add(new MapEntry<Path, Paint>(path, currentPaint));
+      _paths.add(MapEntry<Path, Paint>(path, currentPaint));
     }
   }
 
@@ -156,7 +155,7 @@ class _PathHistory {
       canvas.drawPath(path.key, p);
     }
     canvas.drawRect(
-        new Rect.fromLTWH(0.0, 0.0, size.width, size.height), _backgroundPaint);
+        Rect.fromLTWH(0.0, 0.0, size.width, size.height), _backgroundPaint);
     canvas.restore();
   }
 }
@@ -188,15 +187,15 @@ class PictureDetails {
     if (data != null) {
       return data.buffer.asUint8List();
     } else {
-      throw new FlutterError('Flutter failed to convert an Image to bytes!');
+      throw FlutterError('Flutter failed to convert an Image to bytes!');
     }
   }
 }
 
 /// Used with a [Painter] widget to control drawing.
 class PainterController extends ChangeNotifier {
-  Color _drawColor = new Color.fromARGB(255, 0, 0, 0);
-  Color _backgroundColor = new Color.fromARGB(255, 255, 255, 255);
+  Color _drawColor = const Color.fromARGB(255, 0, 0, 0);
+  Color _backgroundColor = const Color.fromARGB(255, 255, 255, 255);
   bool _eraseMode = false;
 
   double _thickness = 1.0;
@@ -205,7 +204,7 @@ class PainterController extends ChangeNotifier {
   ValueGetter<Size>? _widgetFinish;
 
   /// Creates a new instance for the use in a [Painter] widget.
-  PainterController() : _pathHistory = new _PathHistory();
+  PainterController() : _pathHistory = _PathHistory();
 
   /// Returns true if nothing has been drawn yet.
   bool get isEmpty => _pathHistory.isEmpty;
@@ -249,10 +248,10 @@ class PainterController extends ChangeNotifier {
   }
 
   void _updatePaint() {
-    Paint paint = new Paint();
+    Paint paint = Paint();
     if (_eraseMode) {
       paint.blendMode = BlendMode.clear;
-      paint.color = Color.fromARGB(0, 255, 0, 0);
+      paint.color = const Color.fromARGB(0, 255, 0, 0);
     } else {
       paint.color = drawColor;
       paint.blendMode = BlendMode.srcOver;
@@ -297,7 +296,7 @@ class PainterController extends ChangeNotifier {
       if (_widgetFinish != null) {
         _cached = _render(_widgetFinish!());
       } else {
-        throw new StateError(
+        throw StateError(
             'Called finish on a PainterController that was not connected to a widget yet!');
       }
     }
@@ -306,12 +305,12 @@ class PainterController extends ChangeNotifier {
 
   PictureDetails _render(Size size) {
     if (size.isEmpty) {
-      throw new StateError('Tried to render a picture with an invalid size!');
+      throw StateError('Tried to render a picture with an invalid size!');
     } else {
-      PictureRecorder recorder = new PictureRecorder();
-      Canvas canvas = new Canvas(recorder);
+      PictureRecorder recorder = PictureRecorder();
+      Canvas canvas = Canvas(recorder);
       _pathHistory.draw(canvas, size);
-      return new PictureDetails(
+      return PictureDetails(
           recorder.endRecording(), size.width.floor(), size.height.floor());
     }
   }
