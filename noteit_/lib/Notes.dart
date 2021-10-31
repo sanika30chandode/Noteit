@@ -72,48 +72,50 @@ class _NotesPageState extends State<NotesPage> {
               key: UniqueKey(),
               direction: DismissDirection.horizontal,
               onDismissed: (direction) {
-                setState(() {
-                  deletedNoteHeading = noteHeading[index];
-                  deletedNoteDescription = noteDescription[index];
-                  noteHeading.removeAt(index);
-                  noteDescription.removeAt(index);
-                  Scaffold.of(context).showSnackBar(
-                    new SnackBar(
-                      backgroundColor: Colors.deepPurple[300],
-                      content: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          new Text(
-                            "Note Deleted",
-                            style: TextStyle(),
-                          ),
-                          deletedNoteHeading != ""
-                              ? GestureDetector(
-                                  onTap: () {
-                                    print("undo");
-                                    setState(
-                                      () {
-                                        if (deletedNoteHeading != "") {
-                                          noteHeading.add(deletedNoteHeading);
-                                          noteDescription
-                                              .add(deletedNoteDescription);
-                                        }
-                                        deletedNoteHeading = "";
-                                        deletedNoteDescription = "";
-                                      },
-                                    );
-                                  },
-                                  child: new Text(
-                                    "Undo",
-                                    style: TextStyle(),
-                                  ),
-                                )
-                              : SizedBox(),
-                        ],
+                setState(
+                  () {
+                    deletedNoteHeading = noteHeading[index];
+                    deletedNoteDescription = noteDescription[index];
+                    noteHeading.removeAt(index);
+                    noteDescription.removeAt(index);
+                    Scaffold.of(context).showSnackBar(
+                      new SnackBar(
+                        backgroundColor: Colors.deepPurple[300],
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            new Text(
+                              "Note Deleted",
+                              style: TextStyle(),
+                            ),
+                            deletedNoteHeading != ""
+                                ? GestureDetector(
+                                    onTap: () {
+                                      print("undo");
+                                      setState(
+                                        () {
+                                          if (deletedNoteHeading != "") {
+                                            noteHeading.add(deletedNoteHeading);
+                                            noteDescription
+                                                .add(deletedNoteDescription);
+                                          }
+                                          deletedNoteHeading = "";
+                                          deletedNoteDescription = "";
+                                        },
+                                      );
+                                    },
+                                    child: new Text(
+                                      "Undo",
+                                      style: TextStyle(),
+                                    ),
+                                  )
+                                : SizedBox(),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                });
+                    );
+                  },
+                );
               },
               background: ClipRRect(
                 borderRadius: BorderRadius.circular(5.5),
@@ -312,6 +314,8 @@ class _NotesPageState extends State<NotesPage> {
                       TextFormField(
                         maxLength: notesHeaderMaxLenth,
                         controller: noteHeadingController,
+                        cursorColor: Colors.deepPurple[400],
+
                         decoration: InputDecoration(
                           hintText: "Note Heading",
                           hintStyle: TextStyle(
@@ -347,8 +351,13 @@ class _NotesPageState extends State<NotesPage> {
                             maxLines: notesDescriptionMaxLines,
                             maxLength: notesDescriptionMaxLenth,
                             controller: noteDescriptionController,
+                            cursorColor: Colors.deepPurple[400],
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(),
+                              fillColor: Colors.deepPurple[400],
+                              border: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.deepPurple[400]),
+                              ),
                               hintText: 'Description',
                               hintStyle: TextStyle(
                                 fontSize: 15.00,
