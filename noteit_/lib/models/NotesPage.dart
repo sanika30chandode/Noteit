@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unnecessary_new
+
 import 'package:flutter/material.dart';
 
 final List<String> noteDescription = [];

@@ -1,10 +1,11 @@
+// ignore_for_file: file_names, prefer_final_fields, prefer_is_empty, unnecessary_new, deprecated_member_use, prefer_const_constructors, avoid_print, unnecessary_string_interpolations, duplicate_ignore
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
 import 'Models/NotesPage.dart';
 
 class NotesPage extends StatefulWidget {
-  NotesPage({Key key}) : super(key: key);
+  const NotesPage({Key key}) : super(key: key);
 
   @override
   _NotesPageState createState() => _NotesPageState();
@@ -31,19 +32,25 @@ class _NotesPageState extends State<NotesPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.deepPurple[400],
         elevation: 0,
         title: notesHeader(),
       ),
       body: noteHeading.length > 0
           ? buildNotes()
-          : Center(child: Text("Add Notes...")),
+          : Center(
+              child: Text("Add Notes...",
+                  style: TextStyle(
+                    color: Colors.deepPurple[400],
+                    fontSize: 29,
+                  ))),
       floatingActionButton: FloatingActionButton(
         mini: false,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.deepPurple[400],
         onPressed: () {
           _settingModalBottomSheet(context);
         },
+        // ignore: prefer_const_constructors
         child: Icon(Icons.create),
       ),
     );
@@ -72,7 +79,7 @@ class _NotesPageState extends State<NotesPage> {
                   noteDescription.removeAt(index);
                   Scaffold.of(context).showSnackBar(
                     new SnackBar(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.deepPurple[300],
                       content: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -84,15 +91,17 @@ class _NotesPageState extends State<NotesPage> {
                               ? GestureDetector(
                                   onTap: () {
                                     print("undo");
-                                    setState(() {
-                                      if (deletedNoteHeading != "") {
-                                        noteHeading.add(deletedNoteHeading);
-                                        noteDescription
-                                            .add(deletedNoteDescription);
-                                      }
-                                      deletedNoteHeading = "";
-                                      deletedNoteDescription = "";
-                                    });
+                                    setState(
+                                      () {
+                                        if (deletedNoteHeading != "") {
+                                          noteHeading.add(deletedNoteHeading);
+                                          noteDescription
+                                              .add(deletedNoteDescription);
+                                        }
+                                        deletedNoteHeading = "";
+                                        deletedNoteDescription = "";
+                                      },
+                                    );
                                   },
                                   child: new Text(
                                     "Undo",
@@ -109,14 +118,14 @@ class _NotesPageState extends State<NotesPage> {
               background: ClipRRect(
                 borderRadius: BorderRadius.circular(5.5),
                 child: Container(
-                  color: Colors.green,
+                  color: Colors.red,
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Icon(
                             Icons.delete,
                             color: Colors.white,
@@ -141,7 +150,7 @@ class _NotesPageState extends State<NotesPage> {
                       padding: const EdgeInsets.only(right: 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Icon(
                             Icons.delete,
                             color: Colors.white,
@@ -205,7 +214,7 @@ class _NotesPageState extends State<NotesPage> {
                         height: 2.5,
                       ),
                       Flexible(
-                        child: Container(
+                        child: SizedBox(
                           height: double.infinity,
                           child: AutoSizeText(
                             "${(noteDescription[index])}",
@@ -281,25 +290,23 @@ class _NotesPageState extends State<NotesPage> {
                               print("Notes.dart LineNo:239");
                               print(noteHeadingController.text);
                             },
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Save",
-                                    style: TextStyle(
-                                      fontSize: 20.00,
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            child: Row(
+                              children: const [
+                                Text(
+                                  "Save",
+                                  style: TextStyle(
+                                    fontSize: 20.00,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                       Divider(
-                        color: Colors.blueAccent,
+                        color: Colors.deepPurple.shade400,
                         thickness: 2.5,
                       ),
                       TextFormField(
@@ -312,8 +319,12 @@ class _NotesPageState extends State<NotesPage> {
                             color: Colors.grey,
                             fontWeight: FontWeight.w500,
                           ),
-                          prefixIcon: Icon(Icons.text_fields),
+                          prefixIcon: Icon(
+                            Icons.text_fields,
+                            color: Colors.grey,
+                          ),
                         ),
+                        // ignore: missing_return
                         validator: (String noteHeading) {
                           if (noteHeading.isEmpty) {
                             return "Please enter Note Heading";
@@ -345,6 +356,7 @@ class _NotesPageState extends State<NotesPage> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                            // ignore: missing_return
                             validator: (String noteDescription) {
                               if (noteDescription.isEmpty) {
                                 return "Please enter Note Description";
@@ -376,18 +388,14 @@ Widget notesHeader() {
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         Text(
           "NoteIt",
           style: TextStyle(
-            color: Colors.blueAccent,
+            color: Colors.white,
             fontSize: 30.00,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
-        ),
-        Divider(
-          color: Colors.blueAccent,
-          thickness: 2.5,
         ),
       ],
     ),
