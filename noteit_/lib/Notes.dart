@@ -327,7 +327,15 @@ class _NotesPageState extends State<NotesPage> {
                             Icons.text_fields,
                             color: Colors.grey,
                           ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.deepPurple[400]),
+                          ),
                         ),
+
                         // ignore: missing_return
                         validator: (String noteHeading) {
                           if (noteHeading.isEmpty) {
@@ -353,10 +361,15 @@ class _NotesPageState extends State<NotesPage> {
                             controller: noteDescriptionController,
                             cursorColor: Colors.deepPurple[400],
                             decoration: InputDecoration(
-                              fillColor: Colors.deepPurple[400],
-                              border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.deepPurple[400]),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.deepPurple[400],
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.deepPurple[400],
+                                ),
                               ),
                               hintText: 'Description',
                               hintStyle: TextStyle(
