@@ -90,7 +90,7 @@ class Home extends StatelessWidget {
                     const Icon(CupertinoIcons.book, color: Colors.deepPurple),
                 title: const Text('Notes'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, NoteitRoutes.noteroute);
                 },
               ),
               ListTile(

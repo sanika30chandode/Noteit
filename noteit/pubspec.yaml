@@ -38,6 +38,7 @@ dependencies:
   table_calendar: ^3.0.3
   whiteboardkit: ^0.2.2
   flutter_colorpicker: ^0.6.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
