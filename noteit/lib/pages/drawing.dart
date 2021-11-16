@@ -52,7 +52,8 @@ class _DrawingState extends State<Drawing> {
               if (_controller.isEmpty) {
                 showModalBottomSheet(
                     context: context,
-                    builder: (BuildContext context) => Text('Nothing to undo'));
+                    builder: (BuildContext context) =>
+                        const Text('Nothing to undo'));
               } else {
                 _controller.undo();
               }
@@ -105,6 +106,7 @@ class _DrawingState extends State<Drawing> {
                       return Image.memory(snapshot.data!);
                     }
                   default:
+                    // ignore: avoid_unnecessary_containers
                     return Container(
                         child: const FractionallySizedBox(
                       widthFactor: 0.1,
@@ -123,7 +125,8 @@ class _DrawingState extends State<Drawing> {
 class DrawBar extends StatelessWidget {
   final PainterController _controller;
 
-  DrawBar(this._controller);
+  // ignore: use_key_in_widget_constructors
+  const DrawBar(this._controller);
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +135,7 @@ class DrawBar extends StatelessWidget {
       children: <Widget>[
         Flexible(child: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
+          // ignore: avoid_unnecessary_containers
           return Container(
               child: Slider(
             value: _controller.thickness,

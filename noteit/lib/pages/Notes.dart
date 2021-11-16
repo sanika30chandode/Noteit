@@ -22,19 +22,16 @@ class _NotesPageState extends State<NotesPage> {
   }
 
   @override
-  void dispose() {
-    noteDescriptionController.dispose();
-    noteHeadingController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.deepPurple[400],
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: notesHeader(),
       ),
       body: noteHeading.length > 0
@@ -332,8 +329,10 @@ class _NotesPageState extends State<NotesPage> {
                             borderSide: BorderSide(color: Colors.grey),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.deepPurple.shade400),
+                            borderSide: BorderSide(
+                              color: Colors.deepPurple.shade400,
+                              width: 2.0,
+                            ),
                           ),
                         ),
 
@@ -362,14 +361,15 @@ class _NotesPageState extends State<NotesPage> {
                             controller: noteDescriptionController,
                             cursorColor: Colors.deepPurple[400],
                             decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.deepPurple.shade400,
-                                ),
-                              ),
+                              // enabledBorder: OutlineInputBorder(
+                              //   borderSide: BorderSide(
+                              //     color: Colors.deepPurple.shade400,
+                              //   ),
+                              // ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.deepPurple.shade400,
+                                  width: 2.0,
                                 ),
                               ),
                               hintText: 'Description',

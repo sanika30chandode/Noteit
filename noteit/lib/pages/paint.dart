@@ -52,6 +52,7 @@ class _PainterState extends State<Painter> {
         onPanEnd: _onPanEnd,
       );
     }
+    // ignore: sized_box_for_whitespace
     return Container(
       child: child,
       width: double.infinity,
@@ -96,9 +97,9 @@ class _PainterPainter extends CustomPainter {
 }
 
 class _PathHistory {
-  List<MapEntry<Path, Paint>> _paths;
+  final List<MapEntry<Path, Paint>> _paths;
   Paint currentPaint;
-  Paint _backgroundPaint;
+  final Paint _backgroundPaint;
   bool _inDrag;
 
   bool get isEmpty => _paths.isEmpty || (_paths.length == 1 && _inDrag);
@@ -200,7 +201,7 @@ class PainterController extends ChangeNotifier {
 
   double _thickness = 1.0;
   PictureDetails? _cached;
-  _PathHistory _pathHistory;
+  final _PathHistory _pathHistory;
   ValueGetter<Size>? _widgetFinish;
 
   /// Creates a new instance for the use in a [Painter] widget.
