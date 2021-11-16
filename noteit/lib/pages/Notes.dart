@@ -361,11 +361,11 @@ class _NotesPageState extends State<NotesPage> {
                             controller: noteDescriptionController,
                             cursorColor: Colors.deepPurple[400],
                             decoration: InputDecoration(
-                              // enabledBorder: OutlineInputBorder(
-                              //   borderSide: BorderSide(
-                              //     color: Colors.deepPurple.shade400,
-                              //   ),
-                              // ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.deepPurple.shade400,
