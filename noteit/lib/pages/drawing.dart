@@ -23,7 +23,7 @@ class _DrawingState extends State<Drawing> {
   static PainterController _newController() {
     PainterController controller = PainterController();
     controller.thickness = 5.0;
-    controller.backgroundColor = Colors.blue;
+    controller.backgroundColor = Colors.white;
     return controller;
   }
 
