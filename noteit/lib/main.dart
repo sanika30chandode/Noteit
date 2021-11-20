@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
         NoteitRoutes.noteroute: (context) => const NotesPage(),
         //MyRoutes.loginRoute: (context) => LoginPage()
       },
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+      ),
     );
   }
 }

@@ -69,13 +69,14 @@ class _DrawingState extends State<Drawing> {
     }
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: const Text('Drawing'),
-          actions: actions,
-          bottom: PreferredSize(
-            child: DrawBar(_controller),
-            preferredSize: Size(MediaQuery.of(context).size.width, 30.0),
-          )),
+        backgroundColor: Colors.deepPurple,
+        title: const Text('Drawing'),
+        actions: actions,
+        bottom: PreferredSize(
+          child: DrawBar(_controller),
+          preferredSize: Size(MediaQuery.of(context).size.width, 30.0),
+        ),
+      ),
       body: Center(child: Painter(_controller)
           //AspectRatio(aspectRatio: 0.5, child: Painter(_controller))
           ),
@@ -91,6 +92,7 @@ class _DrawingState extends State<Drawing> {
       return Scaffold(
         appBar: AppBar(
           title: const Text('View your image'),
+          backgroundColor: Colors.deepPurple,
         ),
         body: Container(
             alignment: Alignment.center,
@@ -200,6 +202,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
               return Scaffold(
                   appBar: AppBar(
                     title: const Text('Pick color'),
+                    backgroundColor: Colors.deepPurple,
                   ),
                   body: Container(
                       alignment: Alignment.center,

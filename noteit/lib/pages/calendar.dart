@@ -23,7 +23,7 @@ class _CalendarState extends State<Calendar> {
         titleTextStyle:
             const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple[700],
+        backgroundColor: Colors.deepPurple,
       ),
       body: TableCalendar(
         focusedDay: selectedDay,
@@ -55,8 +55,8 @@ class _CalendarState extends State<Calendar> {
             shape: BoxShape.circle,
           ),
           selectedTextStyle: const TextStyle(color: Colors.white),
-          todayDecoration: BoxDecoration(
-            color: Colors.deepPurple[400],
+          todayDecoration: const BoxDecoration(
+            color: Colors.deepPurple,
             shape: BoxShape.circle,
           ),
         ),
@@ -65,7 +65,7 @@ class _CalendarState extends State<Calendar> {
           titleCentered: true,
           formatButtonShowsNext: false,
           formatButtonDecoration: BoxDecoration(
-            color: Colors.deepPurple[400],
+            color: Colors.deepPurple,
             borderRadius: BorderRadius.circular(5.0),
           ),
           formatButtonTextStyle: const TextStyle(
