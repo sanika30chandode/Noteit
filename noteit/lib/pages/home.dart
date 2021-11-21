@@ -34,16 +34,36 @@ class Home extends StatelessWidget {
                 //alignment: Alignment.center,
               ),
               Container(
-                  alignment: const Alignment(-0.05, -0.65),
-                  child: const Text(
-                    'NoteIt',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 78.0,
-                      fontFamily: 'Daniel',
+                alignment: const Alignment(1.00, -0.65),
+                child: const Text(
+                  'NoteIt',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 78.0,
+                    fontFamily: 'Daniel',
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  alignment: const Alignment(1.00, 3.91),
+                  width: 120,
+                  // ignore: prefer_const_constructors
+                  height: 120,
+                  child: const ClipOval(
+                    child: Align(
+                      alignment: Alignment.center,
+                      heightFactor: 0.615,
+                      widthFactor: 0.615,
+                      child: Image(
+                        image: AssetImage('assets/images/Untitled.jpg'),
+                      ),
                     ),
-                  )),
+                  ),
+                ),
+              )
             ],
           ),
         ),
