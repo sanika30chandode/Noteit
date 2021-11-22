@@ -105,8 +105,9 @@ class _DrawingState extends State<Drawing> {
                     if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
-                      return Image.memory(snapshot.data!);
+                      return Image.memory(snapshot.data);
                     }
+                    break;
                   default:
                     // ignore: avoid_unnecessary_containers
                     return Container(

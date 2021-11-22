@@ -6,7 +6,7 @@ import 'package:noteit/utils/NotesPage.dart';
 import '../utils/NotesPage.dart';
 
 class NotesPage extends StatefulWidget {
-  const NotesPage({Key? key}) : super(key: key);
+  const NotesPage({Key key}) : super(key: key);
 
   @override
   _NotesPageState createState() => _NotesPageState();
@@ -277,7 +277,7 @@ class _NotesPageState extends State<NotesPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (_formKey.currentState.validate()) {
                                 setState(() {
                                   noteHeading.add(noteHeadingController.text);
                                   noteDescription
@@ -338,7 +338,7 @@ class _NotesPageState extends State<NotesPage> {
 
                         // ignore: missing_return
                         validator: (noteHeading) {
-                          if (noteHeading!.isEmpty) {
+                          if (noteHeading.isEmpty) {
                             return "Please enter Note Heading";
                           } else if (noteHeading.startsWith(" ")) {
                             return "Please avoid whitespaces";
@@ -381,7 +381,7 @@ class _NotesPageState extends State<NotesPage> {
                             ),
                             // ignore: missing_return
                             validator: (noteDescription) {
-                              if (noteDescription!.isEmpty) {
+                              if (noteDescription.isEmpty) {
                                 return "Please enter Note Description";
                               } else if (noteDescription.startsWith(" ")) {
                                 return "Please avoid whitespaces";
