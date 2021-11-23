@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
           child: Stack(
             children: <Widget>[
               Image.asset(
-                "assets/images/home_background.png",
+                "assets/images/bg3.jpg",
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
