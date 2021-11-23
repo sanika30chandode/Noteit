@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../utils/speech_api.dart';
@@ -40,7 +42,7 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
               ),
               Container(
-                alignment: const Alignment(1.00, -0.65),
+                alignment: const Alignment(0.70, -0.65),
                 child: const Text(
                   'NoteIt',
                   style: TextStyle(
@@ -52,17 +54,23 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                alignment: const Alignment(1.00, 3.91),
-                width: 120,
-                height: 120,
-                child: const ClipOval(
-                  child: Align(
-                    alignment: Alignment.center,
-                    heightFactor: 0.615,
-                    widthFactor: 0.615,
-                    child: Image(
-                      image: AssetImage('assets/images/Untitled.jpg'),
+                alignment: const Alignment(1.00, 0),
+                width: 140,
+                height: 320,
+                child: AvatarGlow(
+                  animate: isListening,
+                  endRadius: 75,
+                  glowColor: Colors.white,
+                  child: RawMaterialButton(
+                    fillColor: Colors.deepPurple,
+                    shape: const CircleBorder(),
+                    elevation: 0.0,
+                    child: const ImageIcon(
+                      AssetImage('assets/images/logo_tr.png'),
+                      size: 80,
+                      color: Colors.white,
                     ),
+                    onPressed: toggleRecording,
                   ),
                 ),
               ),
@@ -154,22 +162,11 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: AvatarGlow(
-          animate: isListening,
-          endRadius: 75,
-          glowColor: Colors.white,
-          child: FloatingActionButton(
-            child: const Icon(Icons.mic_none, size: 36),
-            backgroundColor: Colors.deepPurple,
-            onPressed: toggleRecording,
-          ),
-        ),
       ),
     );
   }
 
-  toggleRecording() => SpeechApi.toggleRecording(
+  Future toggleRecording() => SpeechApi.toggleRecording(
         onResult: (text) => setState(() => this.text = text),
         onListening: (isListening) {
           setState(() => this.isListening = isListening);
