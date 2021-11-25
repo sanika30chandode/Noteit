@@ -172,11 +172,25 @@ class _HomeState extends State<Home> {
         onListening: (isListening) {
           setState(() => this.isListening = isListening);
 
-          /*if (!isListening) {
+          if (!isListening) {
             Future.delayed(const Duration(seconds: 3), () {
-              //Utils.scanText(text);
+              scanText(text);
             });
-          }*/
+          }
         },
       );
+
+  void scanText(String rawText) {
+    text = rawText.toLowerCase();
+
+    if (text.contains("drawing")) {
+      Navigator.pushNamed(context, NoteitRoutes.drawroute);
+    } else if (text.contains("notes")) {
+      Navigator.pushNamed(context, NoteitRoutes.noteroute);
+    } else if (text.contains("calendar")) {
+      Navigator.pushNamed(context, NoteitRoutes.calroute);
+    }
+
+    text = "";
+  }
 }
