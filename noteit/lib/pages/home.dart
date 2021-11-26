@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../utils/speech_api.dart';
 import '../utils/routes.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -17,7 +18,56 @@ get color => null;
 
 class _HomeState extends State<Home> {
   String text = 'Press the button and start speaking';
+  String stext = '';
   bool isListening = false;
+  bool isSpeaking = false;
+  final _flutterTts = FlutterTts();
+
+  void initializeTts() {
+    _flutterTts.setStartHandler(() {
+      setState(() {
+        isSpeaking = true;
+      });
+    });
+    _flutterTts.setCompletionHandler(() {
+      setState(() {
+        isSpeaking = false;
+      });
+    });
+    _flutterTts.setErrorHandler((message) {
+      setState(() {
+        isSpeaking = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initializeTts();
+  }
+
+  void speak() async {
+    if (stext.isNotEmpty) {
+      await _flutterTts.speak(stext);
+      stext = '';
+    }
+  }
+
+  void stop() async {
+    await _flutterTts.stop();
+    setState(() {
+      isSpeaking = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _flutterTts.stop();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -184,10 +234,16 @@ class _HomeState extends State<Home> {
     text = rawText.toLowerCase();
 
     if (text.contains("drawing")) {
+      stext = 'opening drawing';
+      isSpeaking ? stop() : speak();
       Navigator.pushNamed(context, NoteitRoutes.drawroute);
     } else if (text.contains("notes")) {
+      stext = 'opening notes';
+      isSpeaking ? stop() : speak();
       Navigator.pushNamed(context, NoteitRoutes.noteroute);
     } else if (text.contains("calendar")) {
+      stext = 'opening calendar';
+      isSpeaking ? stop() : speak();
       Navigator.pushNamed(context, NoteitRoutes.calroute);
     }
 
