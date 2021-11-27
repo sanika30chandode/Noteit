@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:noteit/utils/routes.dart';
+import 'pages/note_page.dart';
 import 'utils/routes.dart';
 import 'pages/home.dart';
 import 'pages/calendar.dart';
 import 'pages/drawing.dart';
-import 'pages/Notes.dart';
 
 void main() {
   runApp(const MyApp());
