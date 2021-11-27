@@ -42,7 +42,14 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
           backgroundColor: Colors.deepPurple,
         ),
         body: isLoading
-            ? const Center(child: CircularProgressIndicator())
+            // ignore: avoid_unnecessary_containers
+            ? Container(
+                child: const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.deepPurple,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.deepPurple),
+                ),
+              ))
             : Padding(
                 padding: const EdgeInsets.all(12),
                 child: ListView(
@@ -59,7 +66,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
                     const SizedBox(height: 8),
                     Text(
                       DateFormat.yMMMd().format(note.createdTime),
-                      style: const TextStyle(color: Colors.deepPurple),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 8),
                     Text(

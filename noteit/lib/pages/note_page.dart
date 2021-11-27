@@ -46,7 +46,6 @@ class _NotesPageState extends State<NotesPage> {
             'Notes',
             style: TextStyle(fontSize: 24),
           ),
-          actions: const [Icon(Icons.search), SizedBox(width: 12)],
           backgroundColor: Colors.deepPurple,
         ),
         body: Center(

@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         //MyRoutes.loginRoute: (context) => LoginPage()
       },
       theme: ThemeData(
-        primaryColor: Colors.deepPurple,
-      ),
+          // ignore: deprecated_member_use
+          accentColor: Colors.deepPurple),
     );
   }
 }

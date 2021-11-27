@@ -29,23 +29,23 @@ class NoteFormWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Switch(
-                    value: isImportant ?? false,
-                    onChanged: onChangedImportant,
-                  ),
-                  Expanded(
-                    child: Slider(
-                      value: (number ?? 0).toDouble(),
-                      min: 0,
-                      max: 5,
-                      divisions: 5,
-                      onChanged: (number) => onChangedNumber(number.toInt()),
-                    ),
-                  )
-                ],
-              ),
+              // Row(
+              // children: [
+              //   Switch(
+              //     value: isImportant ?? false,
+              //     onChanged: onChangedImportant,
+              //   ),
+              //   Expanded(
+              //     child: Slider(
+              //       value: (number ?? 0).toDouble(),
+              //       min: 0,
+              //       max: 5,
+              //       divisions: 5,
+              //       onChanged: (number) => onChangedNumber(number.toInt()),
+              //     ),
+              //   )
+              // ],
+              // ),
               buildTitle(),
               const SizedBox(height: 8),
               buildDescription(),
@@ -67,7 +67,7 @@ class NoteFormWidget extends StatelessWidget {
         decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: 'Title',
-          hintStyle: TextStyle(color: Colors.deepPurple),
+          hintStyle: TextStyle(color: Colors.grey),
         ),
         validator: (title) =>
             title != null && title.isEmpty ? 'The title cannot be empty' : null,
@@ -77,11 +77,12 @@ class NoteFormWidget extends StatelessWidget {
   Widget buildDescription() => TextFormField(
         maxLines: 5,
         initialValue: description,
+        cursorColor: Colors.deepPurple,
         style: const TextStyle(color: Colors.deepPurple, fontSize: 18),
         decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: 'Type something...',
-          hintStyle: TextStyle(color: Colors.deepPurple),
+          hintStyle: TextStyle(color: Colors.grey),
         ),
         validator: (title) => title != null && title.isEmpty
             ? 'The description cannot be empty'

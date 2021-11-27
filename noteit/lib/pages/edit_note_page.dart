@@ -55,14 +55,12 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       );
 
   Widget buildButton() {
-    final isFormValid = title.isNotEmpty && description.isNotEmpty;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.white,
-          primary: isFormValid ? null : Colors.deepPurple,
+          primary: Colors.deepPurple,
         ),
         onPressed: addOrUpdateNote,
         child: const Text('Save'),
