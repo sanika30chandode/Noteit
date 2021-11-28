@@ -6,7 +6,7 @@ import 'package:noteit/utils/NotesPage.dart';
 import '../utils/NotesPage.dart';
 
 class NotesPage extends StatefulWidget {
-  const NotesPage({Key? key}) : super(key: key);
+  const NotesPage({Key key}) : super(key: key);
 
   @override
   _NotesPageState createState() => _NotesPageState();
@@ -22,19 +22,16 @@ class _NotesPageState extends State<NotesPage> {
   }
 
   @override
-  void dispose() {
-    noteDescriptionController.dispose();
-    noteHeadingController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.deepPurple[400],
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: notesHeader(),
       ),
       body: noteHeading.length > 0
@@ -42,12 +39,12 @@ class _NotesPageState extends State<NotesPage> {
           : Center(
               child: Text("Add Notes...",
                   style: TextStyle(
-                    color: Colors.deepPurple[400],
+                    color: Colors.deepPurple,
                     fontSize: 29,
                   ))),
       floatingActionButton: FloatingActionButton(
         mini: false,
-        backgroundColor: Colors.deepPurple[400],
+        backgroundColor: Colors.deepPurple,
         onPressed: () {
           _settingModalBottomSheet(context);
         },
@@ -81,7 +78,7 @@ class _NotesPageState extends State<NotesPage> {
                     noteDescription.removeAt(index);
                     Scaffold.of(context).showSnackBar(
                       new SnackBar(
-                        backgroundColor: Colors.deepPurple[300],
+                        backgroundColor: Colors.deepPurple[400],
                         content: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -280,7 +277,7 @@ class _NotesPageState extends State<NotesPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (_formKey.currentState.validate()) {
                                 setState(() {
                                   noteHeading.add(noteHeadingController.text);
                                   noteDescription
@@ -309,13 +306,13 @@ class _NotesPageState extends State<NotesPage> {
                         ],
                       ),
                       Divider(
-                        color: Colors.deepPurple.shade400,
+                        color: Colors.deepPurple,
                         thickness: 2.5,
                       ),
                       TextFormField(
                         maxLength: notesHeaderMaxLenth,
                         controller: noteHeadingController,
-                        cursorColor: Colors.deepPurple[400],
+                        cursorColor: Colors.deepPurple,
 
                         decoration: InputDecoration(
                           hintText: "Note Heading",
@@ -332,14 +329,16 @@ class _NotesPageState extends State<NotesPage> {
                             borderSide: BorderSide(color: Colors.grey),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.deepPurple.shade400),
+                            borderSide: BorderSide(
+                              color: Colors.deepPurple,
+                              width: 2.0,
+                            ),
                           ),
                         ),
 
                         // ignore: missing_return
                         validator: (noteHeading) {
-                          if (noteHeading!.isEmpty) {
+                          if (noteHeading.isEmpty) {
                             return "Please enter Note Heading";
                           } else if (noteHeading.startsWith(" ")) {
                             return "Please avoid whitespaces";
@@ -360,16 +359,17 @@ class _NotesPageState extends State<NotesPage> {
                             maxLines: notesDescriptionMaxLines,
                             maxLength: notesDescriptionMaxLenth,
                             controller: noteDescriptionController,
-                            cursorColor: Colors.deepPurple[400],
+                            cursorColor: Colors.deepPurple,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.deepPurple.shade400,
+                                  color: Colors.grey,
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.deepPurple.shade400,
+                                  color: Colors.deepPurple,
+                                  width: 2.0,
                                 ),
                               ),
                               hintText: 'Description',
@@ -381,7 +381,7 @@ class _NotesPageState extends State<NotesPage> {
                             ),
                             // ignore: missing_return
                             validator: (noteDescription) {
-                              if (noteDescription!.isEmpty) {
+                              if (noteDescription.isEmpty) {
                                 return "Please enter Note Description";
                               } else if (noteDescription.startsWith(" ")) {
                                 return "Please avoid whitespaces";

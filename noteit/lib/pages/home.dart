@@ -1,17 +1,78 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import '../utils/speech_api.dart';
 import '../utils/routes.dart';
+import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({Key key}) : super(key: key);
 
-  get color => null;
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+get color => null;
+
+class _HomeState extends State<Home> {
+  String text = 'Press the button and start speaking';
+  String stext = '';
+  bool isListening = false;
+  bool isSpeaking = false;
+  final _flutterTts = FlutterTts();
+
+  void initializeTts() {
+    _flutterTts.setStartHandler(() {
+      setState(() {
+        isSpeaking = true;
+      });
+    });
+    _flutterTts.setCompletionHandler(() {
+      setState(() {
+        isSpeaking = false;
+      });
+    });
+    _flutterTts.setErrorHandler((message) {
+      setState(() {
+        isSpeaking = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initializeTts();
+  }
+
+  void speak() async {
+    if (stext.isNotEmpty) {
+      await _flutterTts.speak(stext);
+      stext = '';
+    }
+  }
+
+  void stop() async {
+    await _flutterTts.stop();
+    setState(() {
+      isSpeaking = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _flutterTts.stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: "NoteIt",
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -26,24 +87,55 @@ class Home extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Image.asset(
-                "assets/images/home_background.png",
+                "assets/images/bg3.jpg",
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
-
-                //alignment: Alignment.center,
               ),
               Container(
-                  alignment: const Alignment(-0.05, -0.65),
-                  child: const Text(
-                    'NoteIt',
-                    style: TextStyle(
+                alignment: const Alignment(0.70, -0.65),
+                child: const Text(
+                  'NoteIt',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 78.0,
+                    fontFamily: 'Daniel',
+                  ),
+                ),
+              ),
+              Container(
+                alignment: const Alignment(1.00, 0),
+                width: 140,
+                height: 320,
+                child: AvatarGlow(
+                  animate: isListening,
+                  endRadius: 75,
+                  glowColor: Colors.white,
+                  child: RawMaterialButton(
+                    fillColor: Colors.deepPurple,
+                    shape: const CircleBorder(),
+                    elevation: 0.0,
+                    child: const ImageIcon(
+                      AssetImage('assets/images/logo_tr.png'),
+                      size: 80,
                       color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 78.0,
-                      fontFamily: 'Daniel',
                     ),
-                  )),
+                    onPressed: toggleRecording,
+                  ),
+                ),
+              ),
+              Container(
+                alignment: const Alignment(1.00, 0),
+                child: Text(
+                  text,
+                  style: const TextStyle(
+                    fontSize: 32.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -123,5 +215,38 @@ class Home extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future toggleRecording() => SpeechApi.toggleRecording(
+        onResult: (text) => setState(() => this.text = text),
+        onListening: (isListening) {
+          setState(() => this.isListening = isListening);
+
+          if (!isListening) {
+            Future.delayed(const Duration(seconds: 3), () {
+              scanText(text);
+            });
+          }
+        },
+      );
+
+  void scanText(String rawText) {
+    text = rawText.toLowerCase();
+
+    if (text.contains("drawing")) {
+      stext = 'opening drawing';
+      isSpeaking ? stop() : speak();
+      Navigator.pushNamed(context, NoteitRoutes.drawroute);
+    } else if (text.contains("notes")) {
+      stext = 'opening notes';
+      isSpeaking ? stop() : speak();
+      Navigator.pushNamed(context, NoteitRoutes.noteroute);
+    } else if (text.contains("calendar")) {
+      stext = 'opening calendar';
+      isSpeaking ? stop() : speak();
+      Navigator.pushNamed(context, NoteitRoutes.calroute);
+    }
+
+    text = "";
   }
 }

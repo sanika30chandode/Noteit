@@ -19,10 +19,11 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CALENDAR"),
-        titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        title: const Text("CALENDAR"),
+        titleTextStyle:
+            const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple[700],
+        backgroundColor: Colors.deepPurple,
       ),
       body: TableCalendar(
         focusedDay: selectedDay,
@@ -41,6 +42,7 @@ class _CalendarState extends State<Calendar> {
             selectedDay = selectDay;
             focusedDay = focusDay;
           });
+          // ignore: avoid_print
           print(focusedDay);
         },
         selectedDayPredicate: (DateTime date) {
@@ -52,9 +54,9 @@ class _CalendarState extends State<Calendar> {
             color: Colors.pink[300],
             shape: BoxShape.circle,
           ),
-          selectedTextStyle: TextStyle(color: Colors.white),
-          todayDecoration: BoxDecoration(
-            color: Colors.deepPurple[400],
+          selectedTextStyle: const TextStyle(color: Colors.white),
+          todayDecoration: const BoxDecoration(
+            color: Colors.deepPurple,
             shape: BoxShape.circle,
           ),
         ),
@@ -63,10 +65,10 @@ class _CalendarState extends State<Calendar> {
           titleCentered: true,
           formatButtonShowsNext: false,
           formatButtonDecoration: BoxDecoration(
-            color: Colors.deepPurple[400],
+            color: Colors.deepPurple,
             borderRadius: BorderRadius.circular(5.0),
           ),
-          formatButtonTextStyle: TextStyle(
+          formatButtonTextStyle: const TextStyle(
             color: Colors.white,
           ),
         ),

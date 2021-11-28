@@ -23,7 +23,7 @@ class _DrawingState extends State<Drawing> {
   static PainterController _newController() {
     PainterController controller = PainterController();
     controller.thickness = 5.0;
-    controller.backgroundColor = Colors.blue;
+    controller.backgroundColor = Colors.white;
     return controller;
   }
 
@@ -52,7 +52,8 @@ class _DrawingState extends State<Drawing> {
               if (_controller.isEmpty) {
                 showModalBottomSheet(
                     context: context,
-                    builder: (BuildContext context) => Text('Nothing to undo'));
+                    builder: (BuildContext context) =>
+                        const Text('Nothing to undo'));
               } else {
                 _controller.undo();
               }
@@ -68,13 +69,14 @@ class _DrawingState extends State<Drawing> {
     }
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: const Text('Drawing'),
-          actions: actions,
-          bottom: PreferredSize(
-            child: DrawBar(_controller),
-            preferredSize: Size(MediaQuery.of(context).size.width, 30.0),
-          )),
+        backgroundColor: Colors.deepPurple,
+        title: const Text('Drawing'),
+        actions: actions,
+        bottom: PreferredSize(
+          child: DrawBar(_controller),
+          preferredSize: Size(MediaQuery.of(context).size.width, 30.0),
+        ),
+      ),
       body: Center(child: Painter(_controller)
           //AspectRatio(aspectRatio: 0.5, child: Painter(_controller))
           ),
@@ -90,6 +92,7 @@ class _DrawingState extends State<Drawing> {
       return Scaffold(
         appBar: AppBar(
           title: const Text('View your image'),
+          backgroundColor: Colors.deepPurple,
         ),
         body: Container(
             alignment: Alignment.center,
@@ -102,9 +105,11 @@ class _DrawingState extends State<Drawing> {
                     if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
-                      return Image.memory(snapshot.data!);
+                      return Image.memory(snapshot.data);
                     }
+                    break;
                   default:
+                    // ignore: avoid_unnecessary_containers
                     return Container(
                         child: const FractionallySizedBox(
                       widthFactor: 0.1,
@@ -123,7 +128,8 @@ class _DrawingState extends State<Drawing> {
 class DrawBar extends StatelessWidget {
   final PainterController _controller;
 
-  DrawBar(this._controller);
+  // ignore: use_key_in_widget_constructors
+  const DrawBar(this._controller);
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +138,7 @@ class DrawBar extends StatelessWidget {
       children: <Widget>[
         Flexible(child: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
+          // ignore: avoid_unnecessary_containers
           return Container(
               child: Slider(
             value: _controller.thickness,
@@ -196,6 +203,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
               return Scaffold(
                   appBar: AppBar(
                     title: const Text('Pick color'),
+                    backgroundColor: Colors.deepPurple,
                   ),
                   body: Container(
                       alignment: Alignment.center,

@@ -52,6 +52,7 @@ class _PainterState extends State<Painter> {
         onPanEnd: _onPanEnd,
       );
     }
+    // ignore: sized_box_for_whitespace
     return Container(
       child: child,
       width: double.infinity,
@@ -82,7 +83,7 @@ class _PainterState extends State<Painter> {
 class _PainterPainter extends CustomPainter {
   final _PathHistory _path;
 
-  _PainterPainter(this._path, {Listenable? repaint}) : super(repaint: repaint);
+  _PainterPainter(this._path, {Listenable repaint}) : super(repaint: repaint);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -96,9 +97,9 @@ class _PainterPainter extends CustomPainter {
 }
 
 class _PathHistory {
-  List<MapEntry<Path, Paint>> _paths;
+  final List<MapEntry<Path, Paint>> _paths;
   Paint currentPaint;
-  Paint _backgroundPaint;
+  final Paint _backgroundPaint;
   bool _inDrag;
 
   bool get isEmpty => _paths.isEmpty || (_paths.length == 1 && _inDrag);
@@ -183,7 +184,7 @@ class PictureDetails {
   /// the intermediate [Image] to a PNG.
   Future<Uint8List> toPNG() async {
     Image image = await toImage();
-    ByteData? data = await image.toByteData(format: ImageByteFormat.png);
+    ByteData data = await image.toByteData(format: ImageByteFormat.png);
     if (data != null) {
       return data.buffer.asUint8List();
     } else {
@@ -199,9 +200,9 @@ class PainterController extends ChangeNotifier {
   bool _eraseMode = false;
 
   double _thickness = 1.0;
-  PictureDetails? _cached;
-  _PathHistory _pathHistory;
-  ValueGetter<Size>? _widgetFinish;
+  PictureDetails _cached;
+  final _PathHistory _pathHistory;
+  ValueGetter<Size> _widgetFinish;
 
   /// Creates a new instance for the use in a [Painter] widget.
   PainterController() : _pathHistory = _PathHistory();
@@ -294,13 +295,13 @@ class PainterController extends ChangeNotifier {
   PictureDetails finish() {
     if (!isFinished()) {
       if (_widgetFinish != null) {
-        _cached = _render(_widgetFinish!());
+        _cached = _render(_widgetFinish());
       } else {
         throw StateError(
             'Called finish on a PainterController that was not connected to a widget yet!');
       }
     }
-    return _cached!;
+    return _cached;
   }
 
   PictureDetails _render(Size size) {
