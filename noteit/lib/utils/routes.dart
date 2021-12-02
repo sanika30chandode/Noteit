@@ -3,4 +3,5 @@ class NoteitRoutes {
   static String calroute = "/calender";
   static String drawroute = "/drawing";
   static String noteroute = "/note";
+  static String reminderroute = "/reminder";
 }

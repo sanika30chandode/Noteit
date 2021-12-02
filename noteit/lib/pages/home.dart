@@ -160,14 +160,14 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              ListTile(
-                leading:
-                    const Icon(CupertinoIcons.alarm, color: Colors.deepPurple),
-                title: const Text('Alarms'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
+              // ListTile(
+              //   leading:
+              //       const Icon(CupertinoIcons.alarm, color: Colors.deepPurple),
+              //   title: const Text('Alarms'),
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              // ),
               ListTile(
                 leading: const Icon(CupertinoIcons.calendar,
                     color: Colors.deepPurple),
@@ -192,23 +192,23 @@ class _HomeState extends State<Home> {
                   Navigator.pushNamed(context, NoteitRoutes.drawroute);
                 },
               ),
+              // ListTile(
+              //   leading:
+              //       const Icon(CupertinoIcons.pen, color: Colors.deepPurple),
+              //   title: const Text('Quick Notes'),
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              // ),
+
               ListTile(
                 leading:
-                    const Icon(CupertinoIcons.pen, color: Colors.deepPurple),
-                title: const Text('Quick Notes'),
+                    const Icon(CupertinoIcons.bell, color: Colors.deepPurple),
+                title: const Text('Reminders'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, NoteitRoutes.reminderroute);
                 },
               ),
-              /*
-              ListTile(
-                leading: Icon(CupertinoIcons.person, color: Colors.deepPurple),
-                title: const Text('Diary'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              */
             ],
           ),
         ),
