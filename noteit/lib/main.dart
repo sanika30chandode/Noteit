@@ -5,6 +5,13 @@ import 'utils/routes.dart';
 import 'pages/home.dart';
 import 'pages/calendar.dart';
 import 'pages/drawing.dart';
+import 'pages/reminder.dart';
+import 'package:noteit/pages/reminder.dart';
+
+import 'package:timezone/data/latest_all.dart' as tz;
+
+// ignore: unused_import
+import 'package:timezone/timezone.dart' as tz;
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    tz.initializeTimeZones();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
@@ -24,6 +32,7 @@ class MyApp extends StatelessWidget {
         NoteitRoutes.calroute: (context) => Calendar(),
         NoteitRoutes.drawroute: (context) => Drawing(),
         NoteitRoutes.noteroute: (context) => const NotesPage(),
+        NoteitRoutes.reminderroute: (context) => const Reminder(),
         //MyRoutes.loginRoute: (context) => LoginPage()
       },
       theme: ThemeData(

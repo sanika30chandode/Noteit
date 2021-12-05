@@ -19,16 +19,21 @@ class NotesDatabase {
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
+
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
   Future _createDB(Database db, int version) async {
     const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const textType = 'TEXT NOT NULL';
+    const boolType = 'BOOLEAN NOT NULL';
+    const integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableNotes ( 
   ${NoteFields.id} $idType, 
+  ${NoteFields.isImportant} $boolType,
+  ${NoteFields.number} $integerType,
   ${NoteFields.title} $textType,
   ${NoteFields.description} $textType,
   ${NoteFields.time} $textType
@@ -70,11 +75,13 @@ CREATE TABLE $tableNotes (
 
   Future<List<Note>> readAllNotes() async {
     final db = await instance.database;
+
     final orderBy = '${NoteFields.time} ASC';
-    //final result =
-    //    await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
+    // final result =
+    //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
 
     final result = await db.query(tableNotes, orderBy: orderBy);
+
     return result.map((json) => Note.fromJson(json)).toList();
   }
 

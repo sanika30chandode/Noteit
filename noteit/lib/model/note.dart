@@ -3,10 +3,12 @@ const String tableNotes = 'notes';
 class NoteFields {
   static final List<String> values = [
     /// Add all fields
-    id, title, description, time
+    id, isImportant, number, title, description, time
   ];
 
   static String id = '_id';
+  static String isImportant = 'isImportant';
+  static String number = 'number';
   static String title = 'title';
   static String description = 'description';
   static String time = 'time';
@@ -14,12 +16,16 @@ class NoteFields {
 
 class Note {
   final int id;
+  final bool isImportant;
+  final int number;
   final String title;
   final String description;
   final DateTime createdTime;
 
   const Note({
     this.id,
+    this.isImportant,
+    this.number,
     this.title,
     this.description,
     this.createdTime,
@@ -27,12 +33,16 @@ class Note {
 
   Note copy({
     int id,
+    bool isImportant,
+    int number,
     String title,
     String description,
     DateTime createdTime,
   }) =>
       Note(
         id: id ?? this.id,
+        isImportant: isImportant ?? this.isImportant,
+        number: number ?? this.number,
         title: title ?? this.title,
         description: description ?? this.description,
         createdTime: createdTime ?? this.createdTime,
@@ -40,6 +50,8 @@ class Note {
 
   static Note fromJson(Map<String, Object> json) => Note(
         id: json[NoteFields.id] as int,
+        isImportant: json[NoteFields.isImportant] == 1,
+        number: json[NoteFields.number] as int,
         title: json[NoteFields.title] as String,
         description: json[NoteFields.description] as String,
         createdTime: DateTime.parse(json[NoteFields.time] as String),
@@ -48,6 +60,8 @@ class Note {
   Map<String, Object> toJson() => {
         NoteFields.id: id,
         NoteFields.title: title,
+        NoteFields.isImportant: isImportant ? 1 : 0,
+        NoteFields.number: number,
         NoteFields.description: description,
         NoteFields.time: createdTime.toIso8601String(),
       };

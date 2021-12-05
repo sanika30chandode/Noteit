@@ -20,7 +20,15 @@ class _NotesPageState extends State<NotesPage> {
   @override
   void initState() {
     super.initState();
+
     refreshNotes();
+  }
+
+  @override
+  void dispose() {
+    NotesDatabase.instance.close();
+
+    super.dispose();
   }
 
   Future refreshNotes() async {
@@ -42,9 +50,7 @@ class _NotesPageState extends State<NotesPage> {
         ),
         body: Center(
           child: isLoading
-              ? const CircularProgressIndicator(
-                  color: Colors.deepPurple,
-                )
+              ? const CircularProgressIndicator()
               : notes.isEmpty
                   ? const Text(
                       'Add Notes',
