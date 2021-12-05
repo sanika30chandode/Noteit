@@ -10,8 +10,8 @@ class Reminder extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // ignore: deprecated_member_use
-        accentColor: Colors.purple[900],
-        primaryColor: Colors.purple[900],
+        accentColor: Colors.deepPurple,
+        primaryColor: Colors.deepPurple,
       ),
       home: const Scaffold(
         body: Center(

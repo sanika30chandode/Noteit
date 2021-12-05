@@ -69,7 +69,7 @@ class DatePickerState extends State<DatePicker> {
 
     final st = tz.TZDateTime.from(scheduledTime, location);
     fltrNotification.zonedSchedule(
-        counter, "Epap", alarms[id][4], st, generalNotificationDetails,
+        counter, "Reminder", alarms[id][4], st, generalNotificationDetails,
         androidAllowWhileIdle: true,
         payload:
             '${alarms[id][4]} at ${alarms[id][1].hourOfPeriod}:${DatePickerState().getminute(alarms[id][1])} ${DatePickerState().getm(alarms[id][1])}',
@@ -153,14 +153,18 @@ class DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reminder'), actions: [
-        IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: () async {
-            cancelAllNotifications();
-          },
-        )
-      ]),
+      appBar: AppBar(
+        title: const Text('Reminder'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () async {
+              cancelAllNotifications();
+            },
+          )
+        ],
+        backgroundColor: Colors.deepPurple,
+      ),
       body: ListView(
         children: <Widget>[
           ExpansionPanelList(
@@ -173,29 +177,31 @@ class DatePickerState extends State<DatePicker> {
                   return ExpansionPanel(
                       canTapOnHeader: true,
                       headerBuilder: (context, isExpanded) {
-                        return Row(children: [
-                          Expanded(
-                              child: ListTile(
-                            title: Text(item.headerValue),
-                          )),
-                          // IconButton(icon: Icon(Icons.edit), onPressed: null),
-                          Switch(
-                            value: item.toggle,
-                            onChanged: (value) {
-                              setState(() {
-                                item.toggle = !item.toggle;
-                                if (!value) {
-                                  fltrNotification.cancel(item.id);
-                                }
-                                if (value) {
-                                  _sNotification(
-                                      alarms[reminders.indexOf(item)][2],
-                                      reminders.indexOf(item));
-                                }
-                              });
-                            },
-                          )
-                        ]);
+                        return Row(
+                          children: [
+                            Expanded(
+                                child: ListTile(
+                              title: Text(item.headerValue),
+                            )),
+                            // IconButton(icon: Icon(Icons.edit), onPressed: null),
+                            Switch(
+                              value: item.toggle,
+                              onChanged: (value) {
+                                setState(() {
+                                  item.toggle = !item.toggle;
+                                  if (!value) {
+                                    fltrNotification.cancel(item.id);
+                                  }
+                                  if (value) {
+                                    _sNotification(
+                                        alarms[reminders.indexOf(item)][2],
+                                        reminders.indexOf(item));
+                                  }
+                                });
+                              },
+                            )
+                          ],
+                        );
                       },
                       body: Column(children: [
                         Row(
@@ -203,23 +209,24 @@ class DatePickerState extends State<DatePicker> {
                           children: [
                             Expanded(
                               child: ListTile(
-                                  title: Text(
-                                item.expandedValue,
-                                style: const TextStyle(
-                                  fontSize: 18.0,
+                                title: Text(
+                                  item.expandedValue,
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                  ),
                                 ),
-                              )),
+                              ),
                             ),
                             IconButton(
                                 icon: const Icon(
                                   Icons.edit,
                                 ),
-                                color: Colors.purple[900],
+                                color: Colors.deepPurple,
                                 onPressed: () {
                                   editReminder(reminders.indexOf(item));
                                 }),
                             IconButton(
-                                color: Colors.purple[900],
+                                color: Colors.deepPurple,
                                 icon: const Icon(
                                   Icons.event,
                                 ),
@@ -227,7 +234,7 @@ class DatePickerState extends State<DatePicker> {
                                   editDate(context, reminders.indexOf(item));
                                 }),
                             IconButton(
-                                color: Colors.purple[900],
+                                color: Colors.deepPurple,
                                 icon: const Icon(
                                   Icons.access_time,
                                 ),
@@ -248,33 +255,37 @@ class DatePickerState extends State<DatePicker> {
                         Row(
                           children: [
                             Expanded(
-                                child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        2.0, 0.0, 0.0, 20.0),
-                                    child: Column(children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.alarm,
-                                          color: item.dailyColor,
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            if (item.daily) {
-                                              fltrNotification.cancel(item.did);
-                                              item.dailyColor = Colors.black;
-                                              item.daily = false;
-                                            } else {
-                                              item.did = counter;
-                                              _scheduleDailyNotification(
-                                                  reminders.indexOf(item));
-                                              item.dailyColor = Colors.red;
-                                              item.daily = true;
-                                            }
-                                          });
-                                        },
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    2.0, 0.0, 0.0, 20.0),
+                                child: Column(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.alarm,
+                                        color: item.dailyColor,
                                       ),
-                                      const Text('Daily Reminder')
-                                    ]))),
+                                      onPressed: () {
+                                        setState(() {
+                                          if (item.daily) {
+                                            fltrNotification.cancel(item.did);
+                                            item.dailyColor = Colors.black;
+                                            item.daily = false;
+                                          } else {
+                                            item.did = counter;
+                                            _scheduleDailyNotification(
+                                                reminders.indexOf(item));
+                                            item.dailyColor = Colors.red;
+                                            item.daily = true;
+                                          }
+                                        });
+                                      },
+                                    ),
+                                    const Text('Daily Reminder')
+                                  ],
+                                ),
+                              ),
+                            ),
                             Expanded(
                                 child: Padding(
                                     padding: const EdgeInsets.fromLTRB(
@@ -377,17 +388,19 @@ class DatePickerState extends State<DatePicker> {
       DateTime st =
           dt.add(Duration(hours: t.hour, minutes: t.minute, seconds: 5));
 
-      setState(() async {
-        await setReminder();
-        if (st.isAfter(DateTime.now())) {
-          _sNotification(st, index);
-          if (reminder != null) {
-            alarms.insert(l, [dt, time, false, counter, reminder]);
-            reminder = null;
-            reminders = generateItems(alarms);
+      setState(
+        () async {
+          await setReminder();
+          if (st.isAfter(DateTime.now())) {
+            _sNotification(st, index);
+            if (reminder != null) {
+              alarms.insert(l, [dt, time, false, counter, reminder]);
+              reminder = null;
+              reminders = generateItems(alarms);
+            }
           }
-        }
-      });
+        },
+      );
     }
   }
 
@@ -425,42 +438,49 @@ class DatePickerState extends State<DatePicker> {
   setReminder() async {
     await showDialog(
       context: context,
-      builder: (context) => SimpleDialog(children: [
-        Container(
+      builder: (context) => SimpleDialog(
+        children: [
+          Container(
             padding: const EdgeInsets.all(10.0),
             child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      autovalidateMode: AutovalidateMode.disabled,
-                      validator: (value) => (value == "")
-                          ? "Please Enter Reminder Details"
-                          : null,
-                      onSaved: (input) => reminder = input,
-                      decoration: InputDecoration(
-                          labelText: 'Enter Reminder Details',
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 10.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                _formKey.currentState.save();
-                                Navigator.pop(context, reminder);
-                              }
-                            },
-                            child: const Text('Submit'))
-                      ],
-                    )
-                  ],
-                ))),
-      ]),
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.disabled,
+                    validator: (value) =>
+                        (value == "") ? "Please Enter Reminder Details" : null,
+                    onSaved: (input) => reminder = input,
+                    decoration: InputDecoration(
+                        labelText: 'Enter Reminder Details',
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0))),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurple, // background
+                            onPrimary: Colors.white, // foreground
+                          ),
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              Navigator.pop(context, reminder);
+                            }
+                          },
+                          child: const Text('Submit'))
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -545,14 +565,16 @@ class DatePickerState extends State<DatePicker> {
   editReminder(int index) async {
     await setReminder();
     if (reminder != null) {
-      setState(() {
-        alarms[index][4] = reminder;
-        DateTime st = alarms[index][0].add(Duration(
-            hours: alarms[index][1].hour, minutes: alarms[index][1].minute));
-        fltrNotification.cancel(alarms[index][3]);
-        _sNotification(st, index);
-        reminders = generateItems(alarms);
-      });
+      setState(
+        () {
+          alarms[index][4] = reminder;
+          DateTime st = alarms[index][0].add(Duration(
+              hours: alarms[index][1].hour, minutes: alarms[index][1].minute));
+          fltrNotification.cancel(alarms[index][3]);
+          _sNotification(st, index);
+          reminders = generateItems(alarms);
+        },
+      );
     }
   }
 }
@@ -590,12 +612,15 @@ class Item {
 }
 
 List<Item> generateItems(List reminders) {
-  return List.generate(reminders.length, (int index) {
-    return Item(
-      id: reminders[index][3],
-      headerValue: '${reminders[index][4]}',
-      expandedValue:
-          '${reminders[index][0].day} ${DatePickerState().monthsInYear[reminders[index][0].month]} ${reminders[index][0].year} , ${reminders[index][1].hourOfPeriod}:${DatePickerState().getminute(reminders[index][1])} ${DatePickerState().getm(reminders[index][1])}',
-    );
-  });
+  return List.generate(
+    reminders.length,
+    (int index) {
+      return Item(
+        id: reminders[index][3],
+        headerValue: '${reminders[index][4]}',
+        expandedValue:
+            '${reminders[index][0].day} ${DatePickerState().monthsInYear[reminders[index][0].month]} ${reminders[index][0].year} , ${reminders[index][1].hourOfPeriod}:${DatePickerState().getminute(reminders[index][1])} ${DatePickerState().getm(reminders[index][1])}',
+      );
+    },
+  );
 }
