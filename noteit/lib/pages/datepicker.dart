@@ -14,6 +14,7 @@ class DatePicker extends StatefulWidget {
 class DatePickerState extends State<DatePicker> {
   DateTime dt;
   TimeOfDay time;
+
   final _formKey = GlobalKey<FormState>();
   Map<int, String> monthsInYear = {
     1: "January",
@@ -177,31 +178,29 @@ class DatePickerState extends State<DatePicker> {
                   return ExpansionPanel(
                       canTapOnHeader: true,
                       headerBuilder: (context, isExpanded) {
-                        return Row(
-                          children: [
-                            Expanded(
-                                child: ListTile(
-                              title: Text(item.headerValue),
-                            )),
-                            // IconButton(icon: Icon(Icons.edit), onPressed: null),
-                            Switch(
-                              value: item.toggle,
-                              onChanged: (value) {
-                                setState(() {
-                                  item.toggle = !item.toggle;
-                                  if (!value) {
-                                    fltrNotification.cancel(item.id);
-                                  }
-                                  if (value) {
-                                    _sNotification(
-                                        alarms[reminders.indexOf(item)][2],
-                                        reminders.indexOf(item));
-                                  }
-                                });
-                              },
-                            )
-                          ],
-                        );
+                        return Row(children: [
+                          Expanded(
+                              child: ListTile(
+                            title: Text(item.headerValue),
+                          )),
+                          // IconButton(icon: Icon(Icons.edit), onPressed: null),
+                          Switch(
+                            value: item.toggle,
+                            onChanged: (value) {
+                              setState(() {
+                                item.toggle = !item.toggle;
+                                if (!value) {
+                                  fltrNotification.cancel(item.id);
+                                }
+                                if (value) {
+                                  _sNotification(
+                                      alarms[reminders.indexOf(item)][2],
+                                      reminders.indexOf(item));
+                                }
+                              });
+                            },
+                          )
+                        ]);
                       },
                       body: Column(children: [
                         Row(
@@ -209,24 +208,23 @@ class DatePickerState extends State<DatePicker> {
                           children: [
                             Expanded(
                               child: ListTile(
-                                title: Text(
-                                  item.expandedValue,
-                                  style: const TextStyle(
-                                    fontSize: 18.0,
-                                  ),
+                                  title: Text(
+                                item.expandedValue,
+                                style: const TextStyle(
+                                  fontSize: 18.0,
                                 ),
-                              ),
+                              )),
                             ),
                             IconButton(
                                 icon: const Icon(
                                   Icons.edit,
                                 ),
-                                color: Colors.deepPurple,
+                                color: Colors.purple[900],
                                 onPressed: () {
                                   editReminder(reminders.indexOf(item));
                                 }),
                             IconButton(
-                                color: Colors.deepPurple,
+                                color: Colors.purple[900],
                                 icon: const Icon(
                                   Icons.event,
                                 ),
@@ -234,7 +232,7 @@ class DatePickerState extends State<DatePicker> {
                                   editDate(context, reminders.indexOf(item));
                                 }),
                             IconButton(
-                                color: Colors.deepPurple,
+                                color: Colors.purple[900],
                                 icon: const Icon(
                                   Icons.access_time,
                                 ),
@@ -323,35 +321,6 @@ class DatePickerState extends State<DatePicker> {
           ),
         ],
       ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     // Important: Remove any padding from the ListView.
-      //     padding: EdgeInsets.zero,
-      //     children: <Widget>[
-      //       DrawerHeader(
-      //         child: const Text('Drawer Header',
-      //             style: TextStyle(color: Colors.white)),
-      //         decoration: BoxDecoration(
-      //           color: Colors.purple[900],
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 1'),
-      //         onTap: () {
-      //           // Update the state of the app.
-      //           // ...
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 2'),
-      //         onTap: () {
-      //           // Update the state of the app.
-      //           // ...
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           pickDate(context, null);
@@ -388,19 +357,17 @@ class DatePickerState extends State<DatePicker> {
       DateTime st =
           dt.add(Duration(hours: t.hour, minutes: t.minute, seconds: 5));
 
-      setState(
-        () async {
-          await setReminder();
-          if (st.isAfter(DateTime.now())) {
-            _sNotification(st, index);
-            if (reminder != null) {
-              alarms.insert(l, [dt, time, false, counter, reminder]);
-              reminder = null;
-              reminders = generateItems(alarms);
-            }
+      setState(() {
+        setReminder();
+        if (st.isAfter(DateTime.now())) {
+          _sNotification(st, index);
+          if (reminder != null) {
+            alarms.insert(l, [dt, time, false, counter, reminder]);
+            reminder = null;
+            reminders = generateItems(alarms);
           }
-        },
-      );
+        }
+      });
     }
   }
 
@@ -438,49 +405,60 @@ class DatePickerState extends State<DatePicker> {
   setReminder() async {
     await showDialog(
       context: context,
-      builder: (context) => SimpleDialog(
-        children: [
-          Container(
+      builder: (context) => SimpleDialog(children: [
+        Container(
             padding: const EdgeInsets.all(10.0),
             child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.disabled,
-                    validator: (value) =>
-                        (value == "") ? "Please Enter Reminder Details" : null,
-                    onSaved: (input) => reminder = input,
-                    decoration: InputDecoration(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      cursorColor: Colors.deepPurple,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      validator: (value) => (value == "")
+                          ? "Please Enter Reminder Details"
+                          : null,
+                      onSaved: (input) => reminder = input,
+                      decoration: InputDecoration(
                         labelText: 'Enter Reminder Details',
+                        labelStyle: const TextStyle(
+                          color: Colors.deepPurple,
+                        ),
+                        focusColor: Colors.deepPurple,
+                        fillColor: Colors.deepPurple,
+                        hoverColor: Colors.deepPurple,
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0))),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurple, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
-                              Navigator.pop(context, reminder);
-                            }
-                          },
-                          child: const Text('Submit'))
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+                            borderRadius: BorderRadius.circular(10.0)),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.deepPurple),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.deepPurple, // background
+                              onPrimary: Colors.white, // foreground
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
+                                Navigator.pop(context, reminder);
+                              }
+                            },
+                            child: const Text('Submit'))
+                      ],
+                    )
+                  ],
+                ))),
+      ]),
     );
   }
 
@@ -565,16 +543,14 @@ class DatePickerState extends State<DatePicker> {
   editReminder(int index) async {
     await setReminder();
     if (reminder != null) {
-      setState(
-        () {
-          alarms[index][4] = reminder;
-          DateTime st = alarms[index][0].add(Duration(
-              hours: alarms[index][1].hour, minutes: alarms[index][1].minute));
-          fltrNotification.cancel(alarms[index][3]);
-          _sNotification(st, index);
-          reminders = generateItems(alarms);
-        },
-      );
+      setState(() {
+        alarms[index][4] = reminder;
+        DateTime st = alarms[index][0].add(Duration(
+            hours: alarms[index][1].hour, minutes: alarms[index][1].minute));
+        fltrNotification.cancel(alarms[index][3]);
+        _sNotification(st, index);
+        reminders = generateItems(alarms);
+      });
     }
   }
 }
@@ -612,15 +588,12 @@ class Item {
 }
 
 List<Item> generateItems(List reminders) {
-  return List.generate(
-    reminders.length,
-    (int index) {
-      return Item(
-        id: reminders[index][3],
-        headerValue: '${reminders[index][4]}',
-        expandedValue:
-            '${reminders[index][0].day} ${DatePickerState().monthsInYear[reminders[index][0].month]} ${reminders[index][0].year} , ${reminders[index][1].hourOfPeriod}:${DatePickerState().getminute(reminders[index][1])} ${DatePickerState().getm(reminders[index][1])}',
-      );
-    },
-  );
+  return List.generate(reminders.length, (int index) {
+    return Item(
+      id: reminders[index][3],
+      headerValue: '${reminders[index][4]}',
+      expandedValue:
+          '${reminders[index][0].day} ${DatePickerState().monthsInYear[reminders[index][0].month]} ${reminders[index][0].year} , ${reminders[index][1].hourOfPeriod}:${DatePickerState().getminute(reminders[index][1])} ${DatePickerState().getm(reminders[index][1])}',
+    );
+  });
 }

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const Home(),
         NoteitRoutes.homeroute: (context) => const Home(),
-        NoteitRoutes.calroute: (context) => Calendar(),
+        NoteitRoutes.calroute: (context) => const Calendar(),
         NoteitRoutes.drawroute: (context) => Drawing(),
         NoteitRoutes.noteroute: (context) => const NotesPage(),
         NoteitRoutes.reminderroute: (context) => const Reminder(),

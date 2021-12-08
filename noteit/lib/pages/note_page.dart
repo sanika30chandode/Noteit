@@ -24,7 +24,7 @@ class _NotesPageState extends State<NotesPage> {
     refreshNotes();
   }
 
-  @override
+  //@override
   // void dispose() {
   //   NotesDatabase.instance.close();
 
