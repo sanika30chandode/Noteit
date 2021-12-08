@@ -14,6 +14,7 @@ class DatePicker extends StatefulWidget {
 class DatePickerState extends State<DatePicker> {
   DateTime dt;
   TimeOfDay time;
+
   final _formKey = GlobalKey<FormState>();
   Map<int, String> monthsInYear = {
     1: "January",
@@ -69,7 +70,7 @@ class DatePickerState extends State<DatePicker> {
 
     final st = tz.TZDateTime.from(scheduledTime, location);
     fltrNotification.zonedSchedule(
-        counter, "Epap", alarms[id][4], st, generalNotificationDetails,
+        counter, "Reminder", alarms[id][4], st, generalNotificationDetails,
         androidAllowWhileIdle: true,
         payload:
             '${alarms[id][4]} at ${alarms[id][1].hourOfPeriod}:${DatePickerState().getminute(alarms[id][1])} ${DatePickerState().getm(alarms[id][1])}',
@@ -153,14 +154,18 @@ class DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reminder'), actions: [
-        IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: () async {
-            cancelAllNotifications();
-          },
-        )
-      ]),
+      appBar: AppBar(
+        title: const Text('Reminder'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () async {
+              cancelAllNotifications();
+            },
+          )
+        ],
+        backgroundColor: Colors.deepPurple,
+      ),
       body: ListView(
         children: <Widget>[
           ExpansionPanelList(
@@ -248,33 +253,37 @@ class DatePickerState extends State<DatePicker> {
                         Row(
                           children: [
                             Expanded(
-                                child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        2.0, 0.0, 0.0, 20.0),
-                                    child: Column(children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.alarm,
-                                          color: item.dailyColor,
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            if (item.daily) {
-                                              fltrNotification.cancel(item.did);
-                                              item.dailyColor = Colors.black;
-                                              item.daily = false;
-                                            } else {
-                                              item.did = counter;
-                                              _scheduleDailyNotification(
-                                                  reminders.indexOf(item));
-                                              item.dailyColor = Colors.red;
-                                              item.daily = true;
-                                            }
-                                          });
-                                        },
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    2.0, 0.0, 0.0, 20.0),
+                                child: Column(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.alarm,
+                                        color: item.dailyColor,
                                       ),
-                                      const Text('Daily Reminder')
-                                    ]))),
+                                      onPressed: () {
+                                        setState(() {
+                                          if (item.daily) {
+                                            fltrNotification.cancel(item.did);
+                                            item.dailyColor = Colors.black;
+                                            item.daily = false;
+                                          } else {
+                                            item.did = counter;
+                                            _scheduleDailyNotification(
+                                                reminders.indexOf(item));
+                                            item.dailyColor = Colors.red;
+                                            item.daily = true;
+                                          }
+                                        });
+                                      },
+                                    ),
+                                    const Text('Daily Reminder')
+                                  ],
+                                ),
+                              ),
+                            ),
                             Expanded(
                                 child: Padding(
                                     padding: const EdgeInsets.fromLTRB(
@@ -312,35 +321,6 @@ class DatePickerState extends State<DatePicker> {
           ),
         ],
       ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     // Important: Remove any padding from the ListView.
-      //     padding: EdgeInsets.zero,
-      //     children: <Widget>[
-      //       DrawerHeader(
-      //         child: const Text('Drawer Header',
-      //             style: TextStyle(color: Colors.white)),
-      //         decoration: BoxDecoration(
-      //           color: Colors.purple[900],
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 1'),
-      //         onTap: () {
-      //           // Update the state of the app.
-      //           // ...
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Item 2'),
-      //         onTap: () {
-      //           // Update the state of the app.
-      //           // ...
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           pickDate(context, null);
@@ -433,22 +413,40 @@ class DatePickerState extends State<DatePicker> {
                 child: Column(
                   children: [
                     TextFormField(
+                      cursorColor: Colors.deepPurple,
                       autovalidateMode: AutovalidateMode.disabled,
                       validator: (value) => (value == "")
                           ? "Please Enter Reminder Details"
                           : null,
                       onSaved: (input) => reminder = input,
                       decoration: InputDecoration(
-                          labelText: 'Enter Reminder Details',
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 10.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
+                        labelText: 'Enter Reminder Details',
+                        labelStyle: const TextStyle(
+                          color: Colors.deepPurple,
+                        ),
+                        focusColor: Colors.deepPurple,
+                        fillColor: Colors.deepPurple,
+                        hoverColor: Colors.deepPurple,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.deepPurple),
+                        ),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.deepPurple, // background
+                              onPrimary: Colors.white, // foreground
+                            ),
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
                                 _formKey.currentState.save();
