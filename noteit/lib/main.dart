@@ -29,15 +29,17 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const Home(),
         NoteitRoutes.homeroute: (context) => const Home(),
-        NoteitRoutes.calroute: (context) => const Calendar(),
+        NoteitRoutes.calroute: (context) => Calendar(),
         NoteitRoutes.drawroute: (context) => Drawing(),
         NoteitRoutes.noteroute: (context) => const NotesPage(),
         NoteitRoutes.reminderroute: (context) => const Reminder(),
         //MyRoutes.loginRoute: (context) => LoginPage()
       },
       theme: ThemeData(
-          // ignore: deprecated_member_use
-          accentColor: Colors.deepPurple),
+        // ignore: deprecated_member_use
+        accentColor: Colors.deepPurple,
+        colorScheme: const ColorScheme.light(primary: Colors.deepPurple),
+      ),
     );
   }
 }

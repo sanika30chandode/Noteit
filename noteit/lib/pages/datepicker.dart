@@ -4,6 +4,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:noteit/pages/timezone.dart';
+import 'package:noteit/utils/routes.dart';
 
 class DatePicker extends StatefulWidget {
   const DatePicker({Key key}) : super(key: key);
@@ -155,7 +156,15 @@ class DatePickerState extends State<DatePicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reminder'),
+        title: const Text(
+          'Reminder',
+          style: TextStyle(fontSize: 24),
+        ),
+        // automaticallyImplyLeading: false,
+        // leading: const BackButton(
+        //   color: Colors.white,
+        // ),
+
         actions: [
           IconButton(
             icon: const Icon(Icons.delete),
@@ -349,6 +358,21 @@ class DatePickerState extends State<DatePicker> {
           : TimeOfDay(
               hour: tod.hour,
               minute: (tod.minute == 59) ? tod.minute : tod.minute + 1),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurple,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+            // dialogTheme:
+          ),
+          child: child,
+        );
+      },
     );
     if (t != null) {
       int l = alarms.length;
@@ -377,6 +401,21 @@ class DatePickerState extends State<DatePicker> {
       initialDate: (index != null) ? alarms[index][0] : DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime(2022),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurple,
+              onPrimary: Colors.white,
+              surface: Colors.deepPurple,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+            // dialogTheme:
+          ),
+          child: child,
+        );
+      },
     );
     if (date != null) {
       setState(() {
@@ -468,6 +507,21 @@ class DatePickerState extends State<DatePicker> {
       initialDate: alarms[index][0],
       firstDate: DateTime.now(),
       lastDate: DateTime(DateTime.now().year + 5),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurple,
+              onPrimary: Colors.white,
+              surface: Colors.deepPurple,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+            // dialogTheme:
+          ),
+          child: child,
+        );
+      },
     );
     if (newDate != null) {
       List newdateTime = [newDate, alarms[index][1], false];
@@ -490,6 +544,21 @@ class DatePickerState extends State<DatePicker> {
     TimeOfDay newtime = await showTimePicker(
       context: context,
       initialTime: alarms[index][1],
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurple,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+            // dialogTheme:
+          ),
+          child: child,
+        );
+      },
     );
     if (newtime != null) {
       List newdateTime = [alarms[index][0], newtime, false];
@@ -515,11 +584,41 @@ class DatePickerState extends State<DatePicker> {
       initialDate: alarms[index][0],
       firstDate: DateTime.now(),
       lastDate: DateTime(DateTime.now().year + 5),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurple,
+              onPrimary: Colors.white,
+              surface: Colors.deepPurple,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+            // dialogTheme:
+          ),
+          child: child,
+        );
+      },
     );
     if (newDate != null) {
       TimeOfDay newtime = await showTimePicker(
         context: context,
         initialTime: alarms[index][1],
+        builder: (BuildContext context, Widget child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: const ColorScheme.light(
+                primary: Colors.deepPurple,
+                onPrimary: Colors.white,
+                surface: Colors.white,
+                onSurface: Colors.black,
+              ),
+              dialogBackgroundColor: Colors.white,
+              // dialogTheme:
+            ),
+            child: child,
+          );
+        },
       );
       if (newtime != null) {
         List newdateTime = [newDate, newtime, false];

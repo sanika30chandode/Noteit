@@ -35,8 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
-  table_calendar: ^2.2.1
-  shared_preferences: ^2.0.9
+  table_calendar: ^3.0.3
+  #shared_preferences: ^2.0.9
   #whiteboardkit: ^0.2.2
   flutter_colorpicker: ^0.6.0
   auto_size_text: ^3.0.0
