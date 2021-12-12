@@ -1,8 +1,24 @@
-# Noteit
+# Noteit(Application to schedule and manage your day)
 
 ## Description 
 
-There will be an app name "NoteIt" where you can set Alarms and also when you wake up there will be inspirational quote ready for you. where you can add reminders, Quick notes, Sticky notes, and also a diary will be available so that at every night you can write your emotions also there will be Voice Commands so that you dont need to write all the stuff for setting alarms and all. When you feel like bore there will be an option of drawing where people can relax and innovate their creativity. If you sometimes feel like you want some specific caption for the next day, this can also be done. there will be calendar available where you can schedule what you want to do in the whole day or for weekend...According to the requirement. Also font changer in case someone like particular font.
+This application provides various features to the user. These features will help him/her to manage daily events, note down stuff, remind of meetings or functions and in the meantime, a bit of drawing for fun. The team members have applied most of their efforts to make the app more user friendly providing an attractive UI design and time saving features like voice commands and speech to text. Various features used in the app work accordingly and will help the user manage his day.
+
+## Features :
+
+| Feature | Use |
+| ------- | --- |
+| Notes | platform to store info about something, with a header |
+| Calendar | simple calendar, provided in week, fortnight and monthly formats |
+| Drawing | for entertainment, to draw various colors and fonts |
+| Reminder | notifies, about the events, at the time set by user |
+#### Voice Commands : 
+
+Instead of going to the drawer to proceed, user can just command the app to open a particular feature.
+
+### Application User Guide :
+
+
 
 ## Team Members: 
 * SANIKA CHANDODE (LEADER)   
