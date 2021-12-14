@@ -60,7 +60,10 @@ class _NotesPageState extends State<NotesPage> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.deepPurple,
-          child: const Icon(Icons.add),
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
           onPressed: () async {
             await Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const AddEditNotePage()),

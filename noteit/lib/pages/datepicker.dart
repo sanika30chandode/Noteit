@@ -1,6 +1,10 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-// ignore: unused_import
+import 'package:noteit/pages/calendar.dart';
+import 'package:noteit/pages/home.dart';
+
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:noteit/pages/timezone.dart';
@@ -153,192 +157,200 @@ class DatePickerState extends State<DatePicker> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Reminder',
-          style: TextStyle(fontSize: 24),
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'Reminder',
+            style: TextStyle(fontSize: 24),
+          ),
+          // leading: IconButton(
+          //   icon: const Icon(Icons.arrow_back, color: Colors.white),
+          //   onPressed: () {
+          //     Navigator.of(context).pop();
+          //     // Navigator.pop(context, Home);
+          //     // Navigator.push(
+          //     //   context,
+          //     //   MaterialPageRoute(builder: (context) => Drawer()),
+          //     // );
+          //   },
+          // ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () async {
+                cancelAllNotifications();
+              },
+            ),
+          ],
+          backgroundColor: Colors.deepPurple,
         ),
-        // automaticallyImplyLeading: false,
-        // leading: const BackButton(
-        //   color: Colors.white,
-        // ),
-
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () async {
-              cancelAllNotifications();
-            },
-          )
-        ],
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: ListView(
-        children: <Widget>[
-          ExpansionPanelList(
-            expansionCallback: (int index, bool isExpanded) {
-              setState(() {
-                reminders[index].isExpanded = !isExpanded;
-              });
-            },
-            children: reminders?.map<ExpansionPanel>((Item item) {
-                  return ExpansionPanel(
-                      canTapOnHeader: true,
-                      headerBuilder: (context, isExpanded) {
-                        return Row(children: [
-                          Expanded(
-                              child: ListTile(
-                            title: Text(item.headerValue),
-                          )),
-                          // IconButton(icon: Icon(Icons.edit), onPressed: null),
-                          Switch(
-                            value: item.toggle,
-                            onChanged: (value) {
-                              setState(() {
-                                item.toggle = !item.toggle;
-                                if (!value) {
-                                  fltrNotification.cancel(item.id);
-                                }
-                                if (value) {
-                                  _sNotification(
-                                      alarms[reminders.indexOf(item)][2],
-                                      reminders.indexOf(item));
-                                }
-                              });
-                            },
-                          )
-                        ]);
-                      },
-                      body: Column(children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
+        body: ListView(
+          children: <Widget>[
+            ExpansionPanelList(
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  reminders[index].isExpanded = !isExpanded;
+                });
+              },
+              children: reminders?.map<ExpansionPanel>((Item item) {
+                    return ExpansionPanel(
+                        canTapOnHeader: true,
+                        headerBuilder: (context, isExpanded) {
+                          return Row(children: [
                             Expanded(
-                              child: ListTile(
-                                  title: Text(
-                                item.expandedValue,
-                                style: const TextStyle(
-                                  fontSize: 18.0,
-                                ),
-                              )),
-                            ),
-                            IconButton(
-                                icon: const Icon(
-                                  Icons.edit,
-                                ),
-                                color: Colors.purple[900],
-                                onPressed: () {
-                                  editReminder(reminders.indexOf(item));
-                                }),
-                            IconButton(
-                                color: Colors.purple[900],
-                                icon: const Icon(
-                                  Icons.event,
-                                ),
-                                onPressed: () {
-                                  editDate(context, reminders.indexOf(item));
-                                }),
-                            IconButton(
-                                color: Colors.purple[900],
-                                icon: const Icon(
-                                  Icons.access_time,
-                                ),
-                                onPressed: () {
-                                  editTime(context, reminders.indexOf(item));
-                                }),
-                            IconButton(
-                              icon: const Icon(Icons.delete),
-                              color: Colors.red,
-                              onPressed: () {
-                                cancelNotification(
-                                    alarms[reminders.indexOf(item)][3],
-                                    reminders.indexOf(item));
+                                child: ListTile(
+                              title: Text(item.headerValue),
+                            )),
+                            // IconButton(icon: Icon(Icons.edit), onPressed: null),
+                            Switch(
+                              value: item.toggle,
+                              onChanged: (value) {
+                                setState(() {
+                                  item.toggle = !item.toggle;
+                                  if (!value) {
+                                    fltrNotification.cancel(item.id);
+                                  }
+                                  if (value) {
+                                    _sNotification(
+                                        alarms[reminders.indexOf(item)][2],
+                                        reminders.indexOf(item));
+                                  }
+                                });
                               },
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    2.0, 0.0, 0.0, 20.0),
-                                child: Column(
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.alarm,
-                                        color: item.dailyColor,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          if (item.daily) {
-                                            fltrNotification.cancel(item.did);
-                                            item.dailyColor = Colors.black;
-                                            item.daily = false;
-                                          } else {
-                                            item.did = counter;
-                                            _scheduleDailyNotification(
-                                                reminders.indexOf(item));
-                                            item.dailyColor = Colors.red;
-                                            item.daily = true;
-                                          }
-                                        });
-                                      },
-                                    ),
-                                    const Text('Daily Reminder')
-                                  ],
-                                ),
+                            )
+                          ]);
+                        },
+                        body: Column(children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: ListTile(
+                                    title: Text(
+                                  item.expandedValue,
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                  ),
+                                )),
                               ),
-                            ),
-                            Expanded(
+                              IconButton(
+                                  icon: const Icon(
+                                    Icons.edit,
+                                  ),
+                                  color: Colors.purple[900],
+                                  onPressed: () {
+                                    editReminder(reminders.indexOf(item));
+                                  }),
+                              IconButton(
+                                  color: Colors.purple[900],
+                                  icon: const Icon(
+                                    Icons.event,
+                                  ),
+                                  onPressed: () {
+                                    editDate(context, reminders.indexOf(item));
+                                  }),
+                              IconButton(
+                                  color: Colors.purple[900],
+                                  icon: const Icon(
+                                    Icons.access_time,
+                                  ),
+                                  onPressed: () {
+                                    editTime(context, reminders.indexOf(item));
+                                  }),
+                              IconButton(
+                                icon: const Icon(Icons.delete),
+                                color: Colors.red,
+                                onPressed: () {
+                                  cancelNotification(
+                                      alarms[reminders.indexOf(item)][3],
+                                      reminders.indexOf(item));
+                                },
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
                                 child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        2.0, 0.0, 0.0, 20.0),
-                                    child: Column(children: [
+                                  padding: const EdgeInsets.fromLTRB(
+                                      2.0, 0.0, 0.0, 20.0),
+                                  child: Column(
+                                    children: [
                                       IconButton(
                                         icon: Icon(
                                           Icons.alarm,
-                                          color: item.weeklyColor,
+                                          color: item.dailyColor,
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            if (item.weekly) {
-                                              fltrNotification.cancel(item.wid);
-                                              item.weeklyColor = Colors.black;
-                                              item.weekly = false;
+                                            if (item.daily) {
+                                              fltrNotification.cancel(item.did);
+                                              item.dailyColor = Colors.black;
+                                              item.daily = false;
                                             } else {
-                                              item.wid = counter;
-                                              _scheduleWeeklyNotification(
+                                              item.did = counter;
+                                              _scheduleDailyNotification(
                                                   reminders.indexOf(item));
-                                              item.weeklyColor = Colors.red;
-                                              item.weekly = true;
+                                              item.dailyColor =
+                                                  Colors.deepPurple;
+                                              item.daily = true;
                                             }
                                           });
                                         },
                                       ),
-                                      const Text('Weekly'),
-                                    ]))),
-                          ],
-                        )
-                      ]),
-                      isExpanded: item.isExpanded);
-                })?.toList() ??
-                [],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          pickDate(context, null);
-        },
-        child: const Icon(Icons.event),
-        tooltip: 'Add',
-      ),
-    );
-  }
+                                      const Text('Daily Reminder')
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                  child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          2.0, 0.0, 0.0, 20.0),
+                                      child: Column(children: [
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.alarm,
+                                            color: item.weeklyColor,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              if (item.weekly) {
+                                                fltrNotification
+                                                    .cancel(item.wid);
+                                                item.weeklyColor = Colors.black;
+                                                item.weekly = false;
+                                              } else {
+                                                item.wid = counter;
+                                                _scheduleWeeklyNotification(
+                                                    reminders.indexOf(item));
+                                                item.weeklyColor =
+                                                    Colors.deepPurple;
+                                                item.weekly = true;
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        const Text('Weekly'),
+                                      ]))),
+                            ],
+                          )
+                        ]),
+                        isExpanded: item.isExpanded);
+                  })?.toList() ??
+                  [],
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            pickDate(context, null);
+          },
+          child: const Icon(Icons.event),
+          tooltip: 'Add',
+        ),
+      );
 
   Future notificationSelected(String payload) async {
     showDialog(
