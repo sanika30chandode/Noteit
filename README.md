@@ -60,6 +60,9 @@ Instead of going to the drawer to proceed, user can just command the app to open
 <a name="visuals"></a>
 ## Visuals :
 
+### HomePage
+![Homepage(Button)](https://user-images.githubusercontent.com/90754093/146044326-4fd1c3d7-6cf9-4b57-a479-836ace7707ee.png)
+
 <a name="contributors"></a>
 ## Contributors : 
 
