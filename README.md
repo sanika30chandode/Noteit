@@ -66,6 +66,12 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 ### Calendar
 ![Calendar(Month)](https://user-images.githubusercontent.com/90754093/146048340-24e730d2-542e-45a5-83ef-6af4bbb9ca59.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Calendar(Fortnight)](https://user-images.githubusercontent.com/90754093/146048385-fbf678f3-1465-4fa0-9f69-e705db0dd53c.png)
+
+### Notes
+
+
+### Drawing
 
 
 <a name="contributors"></a>
