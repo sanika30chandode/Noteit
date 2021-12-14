@@ -55,6 +55,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 <a name="contributors"></a>
 ## Contributors : 
+
 * SANIKA CHANDODE (LEADER)   
 * PREMRAJ JADHAV   
 * ADITYA SURATNE   
@@ -63,8 +64,15 @@ Instead of going to the drawer to proceed, user can just command the app to open
 <a name="mentors"></a>
 ## Mentors :
 
+* Sarah Tisekar
+* Jainam Dharod
+* Chinmay Janwalkar
+* Mahek Nakhua
+
 <a name="resources"></a>
 ## Acknowledgement and Resources :
+
+
 
    
             
