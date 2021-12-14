@@ -6,7 +6,8 @@
 - [Theory](#theory)
 - [Softwares Used](#softwares)
 - [Getting Started](#start)
-- [Features](#features)
+- [Basic Features](#features)
+- [Visuals](#visuals)
 - [Contributors](#contributors)
 - [Mentors](#mentors)
 - [Acknowlegdements and Resources](#resources)
@@ -19,11 +20,14 @@ This application provides various features to the user. These features will help
 <a name="theory"></a>
 ## Theory :
 
-This project is made using the Programming Language **Dart** in **Flutter** Framework.
+This project is made using the Programming Language **Dart** in **Flutter** Framework with **Github**.
 * **Flutter** is a framework introduced by Google to code applications and websites with an ease. It is much different than other frameworks used, as it gives the programmer a simultaneous visualisation of the application or website.
 * **Dart**, on the other hand, is a programming language, also introduced by Google, which provides a number of packages for improvisation in the code, making it code much shorter and easy to understand.
-* The basic motivation behind this project is to learn and study the language as well as the framework.
+* **Flutter Plugins** are the wrappers of the native code like android and iOS. For the plugins we need to write android and ios specific code. Here, we have used Dart for Android.
 * The basic working on flutter includes installing packages. All the required packages related to flutter and dart can be found on https://pub.dev/
+* **Git** is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+* **GitHub** is a provider of Internet hosting for software development and version control using Git. It offers the distributed version control and source code management functionality of Git, plus its own features.
+* The basic motivation behind this project is to learn and study the Programming Language as well as the Framework. And to get familiar with the concept of Git and working on Github.
 
 <a name="softwares"></a>
 ## Softwares Used :
@@ -41,7 +45,7 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 - Get the source code [here]()
 
 <a name="features"></a>
-## Features :
+## Basic Features :
 
 | Feature | Use |
 | ------- | --- |
@@ -52,6 +56,9 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 #### Voice Commands : 
 
 Instead of going to the drawer to proceed, user can just command the app to open a particular feature.
+
+<a name="visuals"></a>
+## Visuals :
 
 <a name="contributors"></a>
 ## Contributors : 
@@ -64,10 +71,10 @@ Instead of going to the drawer to proceed, user can just command the app to open
 <a name="mentors"></a>
 ## Mentors :
 
-* Sarah Tisekar
-* Jainam Dharod
-* Chinmay Janwalkar
-* Mahek Nakhua
+* SARAH TISEKAR
+* JAINAM DHAROD
+* CHINMAY JANWALKAR
+* MAHEK NAKHUA
 
 <a name="resources"></a>
 ## Acknowledgement and Resources :
