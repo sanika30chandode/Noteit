@@ -70,6 +70,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 ### Notes
 ![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/146050158-c935c7fd-a336-412f-a2bf-b382885aa370.png)
+![Notes(Adding)](https://user-images.githubusercontent.com/90754093/146050063-8f167920-2701-4a27-84f6-63c1df2bf53d.png)
 
 
 ### Drawing
