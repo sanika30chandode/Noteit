@@ -74,6 +74,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 ![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/146050109-16e88de7-208d-458b-aab1-000d88cc9071.png)
 
 ### Drawing
+![Drawing(Board)](https://user-images.githubusercontent.com/90754093/146051538-1393ff3e-f27b-41c4-a3b5-5d0aa45e3f26.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 
 <a name="contributors"></a>
