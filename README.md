@@ -95,6 +95,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 <a name="resources"></a>
 ## Acknowledgement and Resources :
+[CoC](https://www.communityofcoders.in/)
 
 
 
