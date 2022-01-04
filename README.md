@@ -69,7 +69,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 ![Calendar(Fortnight)](https://user-images.githubusercontent.com/90754093/146048385-fbf678f3-1465-4fa0-9f69-e705db0dd53c.png)
 
 ### Notes
-![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/146050158-c935c7fd-a336-412f-a2bf-b382885aa370.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/148096729-9d66af8f-b101-41ba-af75-d400f0577d17.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Notes(Adding)](https://user-images.githubusercontent.com/90754093/146050063-8f167920-2701-4a27-84f6-63c1df2bf53d.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/146050109-16e88de7-208d-458b-aab1-000d88cc9071.png)
 
