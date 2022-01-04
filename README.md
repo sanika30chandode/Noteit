@@ -70,7 +70,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 ### Notes
 ![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/148096729-9d66af8f-b101-41ba-af75-d400f0577d17.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-![Notes(Adding)](https://user-images.githubusercontent.com/90754093/146050063-8f167920-2701-4a27-84f6-63c1df2bf53d.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Notes(Adding)](https://user-images.githubusercontent.com/90754093/148097005-a4c4a136-8682-4a69-83c8-3b98e1acf6a5.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/146050109-16e88de7-208d-458b-aab1-000d88cc9071.png)
 
 ### Drawing
