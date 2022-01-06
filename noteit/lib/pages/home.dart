@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
               ),
               Container(
-                alignment: const Alignment(0.70, -0.65),
+                alignment: const Alignment(0.70, -0.62),
                 child: const Text(
                   'NoteIt',
                   style: TextStyle(
