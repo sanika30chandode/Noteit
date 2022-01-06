@@ -35,7 +35,7 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 - [Flutter](https://docs.flutter.dev/get-started/install)
   * [Android Studio](https://docs.flutter.dev/get-started/editor?tab=androidstudio)
   * [VSCode](https://docs.flutter.dev/get-started/editor?tab=vscode)
-- [Github](https://github.com/)
+- [Github](https://github.com/sanika30chandode/Noteit)
 - [Plugins](https://pub.dev/)
 
 <a name="start"></a>
