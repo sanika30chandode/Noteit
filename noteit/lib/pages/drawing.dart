@@ -70,7 +70,10 @@ class _DrawingState extends State<Drawing> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: const Text('Drawing'),
+        title: const Text(
+          'Drawing',
+          style: TextStyle(fontSize: 24),
+        ),
         actions: actions,
         bottom: PreferredSize(
           child: DrawBar(_controller),

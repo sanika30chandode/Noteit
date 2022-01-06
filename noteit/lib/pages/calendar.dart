@@ -19,10 +19,10 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("CALENDAR"),
-        titleTextStyle:
-            const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        centerTitle: true,
+        title: const Text(
+          'Calendar',
+          style: TextStyle(fontSize: 24),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: TableCalendar(
