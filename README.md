@@ -74,7 +74,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 &nbsp; &nbsp; ![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/148097218-82c017b5-0689-40fc-9aca-6bc28687a7c1.png)
 
 ### Drawing
-![Drawing(Board)](https://user-images.githubusercontent.com/90754093/146051538-1393ff3e-f27b-41c4-a3b5-5d0aa45e3f26.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Drawing(Board)](https://user-images.githubusercontent.com/90754093/148418428-7046a640-55d1-4a8e-9bce-af9b48b66ebc.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 ![Drawing(PickColor)](https://user-images.githubusercontent.com/90754093/146051569-a777f49f-3f22-40a4-93d1-58096a7c2f17.png)
 
 <a name="contributors"></a>
