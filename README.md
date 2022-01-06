@@ -35,14 +35,14 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 - [Flutter](https://docs.flutter.dev/get-started/install)
   * [Android Studio](https://docs.flutter.dev/get-started/editor?tab=androidstudio)
   * [VSCode](https://docs.flutter.dev/get-started/editor?tab=vscode)
-- [Github](https://github.com/sanika30chandode/Noteit)
+- [Github](https://github.com/)
 - [Plugins](https://pub.dev/)
 
 <a name="start"></a>
 ## Getting Started :
 
 - Download the app from [APK file]()
-- Get the source code [here]()
+- Get the source code [here](https://github.com/sanika30chandode/Noteit/tree/main/noteit)
 
 <a name="features"></a>
 ## Basic Features :
