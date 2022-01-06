@@ -10,7 +10,7 @@
 - [Visuals](#visuals)
 - [Contributors](#contributors)
 - [Mentors](#mentors)
-- [Acknowlegdements and Resources](#resources)
+- [Acknowlegdement and Resources](#resources)
 
 <a name="about"></a>
 ## About the Project : 
