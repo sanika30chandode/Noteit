@@ -62,7 +62,7 @@ Instead of going to the drawer to proceed, user can just command the app to open
 
 ### HomePage
 ![Homepage(Button)](https://user-images.githubusercontent.com/90754093/148643975-14dd60d8-9afe-4516-8844-4e11ff08d546.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-![Homepage(Drawer)](https://user-images.githubusercontent.com/90754093/146044403-e54b3491-d742-466f-9138-fe54010e499a.png) 
+![Homepage(Drawer)](https://user-images.githubusercontent.com/90754093/148644077-352d6ddc-676e-4f9b-a919-8c4f8827760a.png)
 
 ### Calendar
 ![Calendar(Month)](https://user-images.githubusercontent.com/90754093/146048340-24e730d2-542e-45a5-83ef-6af4bbb9ca59.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
