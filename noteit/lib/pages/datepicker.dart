@@ -412,7 +412,7 @@ class DatePickerState extends State<DatePicker> {
       context: context,
       initialDate: (index != null) ? alarms[index][0] : DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime(2022),
+      lastDate: DateTime(2023),
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: Theme.of(context).copyWith(
