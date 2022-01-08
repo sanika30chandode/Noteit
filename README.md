@@ -41,7 +41,7 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 <a name="start"></a>
 ## Getting Started :
 
-- Download the app from [APK file]()
+- Download the app from [APK file](https://github.com/sanika30chandode/Noteit/blob/main/NoteIt.apk)
 - Get the source code [here](https://github.com/sanika30chandode/Noteit/tree/main/noteit)
 
 <a name="features"></a>
