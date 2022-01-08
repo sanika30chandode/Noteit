@@ -10,7 +10,7 @@
 - [Visuals](#visuals)
 - [Contributors](#contributors)
 - [Mentors](#mentors)
-- [Acknowlegdements and Resources](#resources)
+- [Acknowlegdement and Resources](#resources)
 
 <a name="about"></a>
 ## About the Project : 
@@ -42,7 +42,7 @@ This project is made using the Programming Language **Dart** in **Flutter** Fram
 ## Getting Started :
 
 - Download the app from [APK file]()
-- Get the source code [here]()
+- Get the source code [here](https://github.com/sanika30chandode/Noteit/tree/main/noteit)
 
 <a name="features"></a>
 ## Basic Features :
@@ -69,13 +69,15 @@ Instead of going to the drawer to proceed, user can just command the app to open
 ![Calendar(Fortnight)](https://user-images.githubusercontent.com/90754093/146048385-fbf678f3-1465-4fa0-9f69-e705db0dd53c.png)
 
 ### Notes
-![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/146050158-c935c7fd-a336-412f-a2bf-b382885aa370.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-![Notes(Adding)](https://user-images.githubusercontent.com/90754093/146050063-8f167920-2701-4a27-84f6-63c1df2bf53d.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/146050109-16e88de7-208d-458b-aab1-000d88cc9071.png)
+&nbsp; &nbsp; ![Notes(BeforeAdding)](https://user-images.githubusercontent.com/90754093/148096729-9d66af8f-b101-41ba-af75-d400f0577d17.png)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; ![Notes(Adding)](https://user-images.githubusercontent.com/90754093/148097005-a4c4a136-8682-4a69-83c8-3b98e1acf6a5.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; ![Notes(AfterAdding)](https://user-images.githubusercontent.com/90754093/148097218-82c017b5-0689-40fc-9aca-6bc28687a7c1.png)
 
 ### Drawing
-![Drawing(Board)](https://user-images.githubusercontent.com/90754093/146051538-1393ff3e-f27b-41c4-a3b5-5d0aa45e3f26.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-![Drawing(PickColor)](https://user-images.githubusercontent.com/90754093/146051569-a777f49f-3f22-40a4-93d1-58096a7c2f17.png)
+![Drawing(Board)](https://user-images.githubusercontent.com/90754093/148418428-7046a640-55d1-4a8e-9bce-af9b48b66ebc.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Drawing(Painted)](https://user-images.githubusercontent.com/90754093/148418683-1bfde6a4-1330-4a88-9590-dec67b21f51a.png)
+![Drawing(PickColor)](https://user-images.githubusercontent.com/90754093/148418900-7ec17a52-527a-4fac-8f68-51859bf64814.png) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![Drawing(Saved)](https://user-images.githubusercontent.com/90754093/148419151-a2e71631-500b-4d23-87c3-a6888978b096.png)
 
 <a name="contributors"></a>
 ## Contributors : 
