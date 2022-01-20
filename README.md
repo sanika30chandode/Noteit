@@ -1,5 +1,20 @@
 # Noteit(Application to schedule and manage your day)
 
+### Team name: APPS.inc
+
+## Team members
+* Sanika Chandode - sanu30chandode@gmail.com
+* Premraj Jadhav - pvjadhav_b20@el.vjti.ac.in
+* Aditya Suratne - arsuratne_b20@it.vjti.ac.in
+* Poras Zode - 
+
+## Mentors
+* Sarah Tisekar
+* Jainam Dharod
+* Chinmay Janwalkar
+* Mahek Nakhua
+
+
 ## Table of contents :
 
 - [About the Project](#about)
