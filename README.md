@@ -15,19 +15,6 @@
 * Mahek Nakhua
 
 
-## Table of contents :
-
-- [About the Project](#about)
-- [Theory](#theory)
-- [Softwares Used](#softwares)
-- [Getting Started](#start)
-- [Basic Features](#features)
-- [Visuals](#visuals)
-- [Contributors](#contributors)
-- [Mentors](#mentors)
-- [Acknowlegdement and Resources](#resources)
-
-
 ## Description : 
 
 This application provides various features to the user. These features will help him/her to manage daily events, note down stuff, remind of meetings or functions and in the meantime, a bit of drawing for fun. The team members have applied most of their efforts to make the app more user friendly providing an attractive UI design and time saving features like voice commands and speech to text. Various features used in the app work accordingly and will help the user manage his day.
@@ -75,7 +62,7 @@ This application is easy and simple to use. If you want to note some important p
 
 
 ## Future Scope :
-We are planning to improve this project by picking date in calendar and setting it as any special date, we would also like to bring new versions of drawing and reminder and also note!
+We are planning to improve this project by picking date in calendar and setting it as any special date, we would also like to bring new versions of drawing and reminder and also notes!
 
 ## Screenshots :
 
@@ -102,8 +89,6 @@ We are planning to improve this project by picking date in calendar and setting 
 
 
 
-## Acknowledgement and Resources :
-* [CoC](https://www.communityofcoders.in/)
 
 
 
